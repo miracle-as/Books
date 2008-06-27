@@ -5,6 +5,7 @@ tmp/sessions/*
 tmp/sockets/*
 .DS_Store
 coverage
+db/*.sqlite3
 public/cache/**/*
 doc/api
 doc/app
