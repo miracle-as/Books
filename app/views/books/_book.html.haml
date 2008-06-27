@@ -1,4 +1,7 @@
 .book
+  - unless book.small_image_url.blank?
+    .image= link_to image_tag(book.small_image_url), book
+
   %h2= link_to book.name, book
   
   - if book.authors.size > 0
@@ -8,14 +11,13 @@
       
   - unless book.published.blank?
     %span.published
-      Published:
-      %span= book.published
+      %label Published:
+      = book.published
       
   - unless book.pages.blank?
     %span.pages
-      Pages:
-      %span= book.pages
-      
-  - unless book.amazon_detail_page_url.blank?
-    %span.amazon
-      = link_to 'Amazon', book.amazon_detail_page_url
+      %label Pages:
+      = book.pages
+
+  .clear
+    %hr

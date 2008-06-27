@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = Book.all(:limit => 5, :order => 'created_at DESC')
     @book = Book.new
   end
   
@@ -17,6 +17,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_url
     else
+      @book = Book.new if params[:book] == { 'isbn' => '' }
       render :action => 'new'
     end
   end

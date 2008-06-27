@@ -5,14 +5,28 @@
     by
     %span= @book.author_names
   
-  .isbn
-    %label ISBN:
-    = @book.isbn
+  .isbn-10
+    %label ISBN-10:
+    = @book.isbn_10
+
+  .isbn-13
+    %label ISBN-13:
+    = @book.isbn_13
   
-  .published
-    %label Published:
-    = @book.published
+  - unless @book.published.blank?
+    .published
+      %label Published:
+      = @book.published
   
-  .pages
-    %label Pages:
-    = @book.pages
+  - unless @book.pages.blank?
+    .pages
+      %label Pages:
+      = @book.pages
+      
+  .added
+    %label Added:
+    = @book.created_at.to_date
+    
+- if @book.large_image_url
+  - content_for :sidebar do
+    .cover= link_to image_tag(@book.medium_image_url), @book.amazon_detail_page_url, :target => '_blank'

@@ -9,20 +9,29 @@ class Book < ActiveRecord::Base
   validate :must_be_valid_isbn
   validates_uniqueness_of :isbn
 
-  before_validation :convert_isbn_to_isbn10
+  before_validation :cleanup_isbn
   after_create :initialize_from_amazon
   
   def author_names
-    self.authors.collect(&:name).join(', ')
+    self.authors.collect(&:name).to_sentence(:skip_last_comma => true)
+  end
+  
+  def isbn_10
+    ISBN_Tools.hyphenate_isbn10(self.isbn)
+  end
+  
+  def isbn_13
+    ISBN_Tools.hyphenate_isbn13(ISBN_Tools.isbn10_to_isbn13(self.isbn))
   end
   
   protected
   def must_be_valid_isbn
-    errors.add :isbn, 'must be valid' unless ISBN_Tools.is_valid?(self.isbn.to_s)
+    errors.add :isbn, 'must be valid' unless ISBN_Tools.is_valid?(self.isbn)
   end
   
-  def convert_isbn_to_isbn10
-    self.isbn = ISBN_Tools.isbn13_to_isbn10(self.isbn.to_s).to_i if ISBN_Tools.is_valid_isbn13?(isbn.to_s)
+  def cleanup_isbn
+    self.isbn = ISBN_Tools.isbn13_to_isbn10(self.isbn) if ISBN_Tools.is_valid_isbn13?(self.isbn)
+    self.isbn = ISBN_Tools.cleanup(self.isbn)
   end
   
   def initialize_from_amazon
@@ -35,6 +44,10 @@ class Book < ActiveRecord::Base
       self.name = (item/:title).innerHTML
       self.pages = (item/:numberofpages).innerHTML
       self.published = (item/:publicationdate).innerHTML
+      
+      self.small_image_url = (item/"smallimage/url").innerHTML
+      self.medium_image_url = (item/"mediumimage/url").innerHTML
+      self.large_image_url = (item/"largeimage/url").innerHTML
       
       publisher = (item/:publisher).innerHTML
       publisher = Publisher.find_or_create_by_name(publisher)

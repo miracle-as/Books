@@ -74,10 +74,25 @@ a {
       color: #5F5F5F; }
   #bd #books .book {
     margin-bottom: 20px; }
+    #bd #books .book .image {
+      width: 57px;
+      float: left;
+      margin-right: 10px; }
+      #bd #books .book .image img {
+        vertical-align: top; }
+    #bd #books .book .authors {
+      display: block;
+      margin-bottom: 1em; }
+    #bd #books .book label {
+      font-weight: bold; }
   #bd #book .authors {
-    margin-bottom: 20px; }
+    margin-bottom: 1em; }
+  #bd #book .added {
+    margin-top: 1em; }
   #bd #book label {
     font-weight: bold; }
+  #bd #sidebar .cover {
+    text-align: right; }
 
 #ft {
   padding: 20px;
