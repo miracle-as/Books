@@ -1,6 +1,6 @@
 - title @book.name
 #book
-  %h2= @book.name
+  %h3= @book.name
   .authors
     by
     %span= @book.author_names
@@ -27,6 +27,6 @@
     %label Added:
     = @book.created_at.to_date
     
-- if @book.large_image_url
+- if @book.large_image_id
   - content_for :sidebar do
-    .cover= link_to image_tag(@book.medium_image_url), @book.amazon_detail_page_url, :target => '_blank'
+    .cover= link_to @book.medium_image.image_tag, @book.amazon_detail_page_url, :target => '_blank'

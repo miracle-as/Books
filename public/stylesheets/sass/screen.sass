@@ -1,5 +1,5 @@
 !content_width = 950px
-!sidebar_width = 250px
+!sidebar_width = 220px
 
 a
   :text-decoration none
@@ -13,6 +13,7 @@ a
   :border-top 3px solid #009ABF
   
   h1
+    :float left
     :font-size 19px
     :background-color #FFFFFF
     
@@ -22,8 +23,13 @@ a
       :padding-left 0px
       :line-height 31px
       :color #000000
+      
+  .search
+    :float right
+    :padding-top 15px
 
   #menu
+    :clear both
     :background-color #98CAD5
 
     ul
@@ -53,13 +59,16 @@ a
   :background-color #F4F2E9
   :padding-top 20px
   :padding-bottom 20px
+
+  h2
+    :color #5F5F5F
+    :font-weight bold
+    :margin-bottom 1em
   
   h2.page_title
     :text-transform uppercase
-    :color #5F5F5F
-    :font-weight bold
     :margin-bottom 20px
-  
+
   #sidebar
     :width = !sidebar_width
     :float right
@@ -72,7 +81,7 @@ a
     :color #009ABF
     :text-decoration underline
   
-  h2
+  h3
     :font-weight bold
     
     a
@@ -88,6 +97,9 @@ a
       
     input.small
       :width 4em
+      
+    input.medium
+      :width 10em
       
     .note
       :font-size 12px

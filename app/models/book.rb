@@ -5,7 +5,11 @@ class Book < ActiveRecord::Base
   has_many :authors, :through => :authorships
   has_many :releases
   has_many :publishers, :through => :releases
-  
+
+  belongs_to :small_image, :class_name => "Image", :foreign_key => "small_image_id"
+  belongs_to :medium_image, :class_name => "Image", :foreign_key => "medium_image_id"
+  belongs_to :large_image, :class_name => "Image", :foreign_key => "large_image_id"
+
   validate :must_be_valid_isbn
   validates_uniqueness_of :isbn
 
@@ -44,11 +48,11 @@ class Book < ActiveRecord::Base
       self.name = (item/:title).innerHTML
       self.pages = (item/:numberofpages).innerHTML
       self.published = (item/:publicationdate).innerHTML
-      
-      self.small_image_url = (item/"smallimage/url").innerHTML
-      self.medium_image_url = (item/"mediumimage/url").innerHTML
-      self.large_image_url = (item/"largeimage/url").innerHTML
-      
+
+      self.small_image = xml_to_image(item/:smallimage)
+      self.medium_image = xml_to_image(item/:mediumimage)
+      self.large_image = xml_to_image(item/:largeimage)
+
       publisher = (item/:publisher).innerHTML
       publisher = Publisher.find_or_create_by_name(publisher)
       self.publishers << publisher
@@ -60,6 +64,14 @@ class Book < ActiveRecord::Base
       end
 
       self.save
+    end
+  end
+  
+  def xml_to_image(xml)
+    Image.create do |image|
+      image.url = (xml/:url).first.innerHTML
+      image.width = (xml/:width).first.innerHTML
+      image.height = (xml/:height).first.innerHTML
     end
   end
 end

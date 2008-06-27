@@ -5,7 +5,7 @@
   - form_for @book do |f|
     .field
       = f.label :isbn, 'ISBN'
-      = f.text_field :isbn
+      = f.text_field :isbn, :class => 'medium'
       .note Leave empty if you don't know the ISBN.
     
-    = submit_tag 'Create book'
+    = submit_tag 'Create book', :disable_with => 'Creating' + '&hellip;'

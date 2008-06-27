@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  
+  before_filter :initialize_empty_search
+  
+  protected
+  def initialize_empty_search
+    @search = Search.new
+  end
 end

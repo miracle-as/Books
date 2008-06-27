@@ -1,0 +1,9 @@
+- title "Search for '#{@search.keywords}'"
+
+- if @books.size > 0
+  %h2 Books
+  #books= render :partial => @books
+  
+- if @authors.size > 0
+  %h2 Authors
+  #authors= render :partial => @authors

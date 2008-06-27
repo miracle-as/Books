@@ -9,6 +9,7 @@ a {
 #hd {
   border-top: 3px solid #009ABF; }
   #hd h1 {
+    float: left;
     font-size: 19px;
     background-color: #FFFFFF; }
     #hd h1 a {
@@ -17,7 +18,11 @@ a {
       padding-left: 0px;
       line-height: 31px;
       color: #000000; }
+  #hd .search {
+    float: right;
+    padding-top: 15px; }
   #hd #menu {
+    clear: both;
     background-color: #98CAD5; }
     #hd #menu ul {
       position: relative;
@@ -43,23 +48,25 @@ a {
   background-color: #F4F2E9;
   padding-top: 20px;
   padding-bottom: 20px; }
-  #bd h2.page_title {
-    text-transform: uppercase;
+  #bd h2 {
     color: #5F5F5F;
     font-weight: bold;
+    margin-bottom: 1em; }
+  #bd h2.page_title {
+    text-transform: uppercase;
     margin-bottom: 20px; }
   #bd #sidebar {
-    width: 250px;
+    width: 220px;
     float: right; }
   #bd .with-sidebar #main {
-    width: 700px;
+    width: 730px;
     float: left; }
   #bd a {
     color: #009ABF;
     text-decoration: underline; }
-  #bd h2 {
+  #bd h3 {
     font-weight: bold; }
-    #bd h2 a {
+    #bd h3 a {
       text-decoration: none;
       color: #000000; }
   #bd .field {
@@ -69,6 +76,8 @@ a {
       font-weight: bold; }
     #bd .field input.small {
       width: 4em; }
+    #bd .field input.medium {
+      width: 10em; }
     #bd .field .note {
       font-size: 12px;
       color: #5F5F5F; }
