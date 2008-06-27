@@ -1,10 +1,10 @@
 class CreateBooks < ActiveRecord::Migration
   def self.up
     create_table :books do |t|
-      t.name :string
-      t.isbn :string
-      t.pages :integer
-      t.published :date
+      t.string :name
+      t.string :isbn
+      t.integer :pages
+      t.date :published
 
       t.timestamps
     end
