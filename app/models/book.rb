@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
   after_create :initialize_from_amazon
   
   def author_names
-    self.authors.collect(&:name).to_sentence(:skip_last_comma => true)
+    self.authors.collect(&:name).sort.to_sentence(:skip_last_comma => true)
   end
   
   def isbn_10
