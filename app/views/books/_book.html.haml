@@ -1,13 +1,17 @@
-%h2= book.name
-- if book.authors.size > 0
-  %span.authors
-    by
-    %span= book.author_names
-- unless book.published.blank?
-  %span.published
-    Published:
-    %span= book.published
-- unless book.pages.blank?
-  %span.pages
-    Pages:
-    %span= book.pages
+.book
+  %h2= link_to book.name, book
+  
+  - if book.authors.size > 0
+    %span.authors
+      by
+      %span= book.author_names
+      
+  - unless book.published.blank?
+    %span.published
+      Published:
+      %span= book.published
+      
+  - unless book.pages.blank?
+    %span.pages
+      Pages:
+      %span= book.pages

@@ -1,21 +1,25 @@
 a {
   text-decoration: none; }
 
-html, body {
-  background-color: #999999; }
+.content {
+  width: 950px;
+  margin: auto;
+  text-align: left; }
 
 #hd {
-  background-color: #47869F; }
+  border-top: 3px solid #009ABF; }
   #hd h1 {
+    float: left;
     font-size: 19px;
-    background-color: #FFFFFF;
-    border-top: 3px solid #009ABF; }
+    background-color: #FFFFFF; }
     #hd h1 a {
       display: block;
       padding: 10px;
-      padding-left: 20px;
+      padding-left: 0px;
+      line-height: 31px;
       color: #000000; }
   #hd ul#menu {
+    float: right;
     display: block;
     padding-left: 12px; }
     #hd ul#menu li {
@@ -24,19 +28,63 @@ html, body {
         float: left;
         display: block;
         padding: 8px;
-        color: #FFFFFF; }
+        color: #000000;
+        line-height: 31px;
+        border-top: 3px solid #FFFFFF;
+        text-transform: uppercase;
+        color: #5F5F5F;
+        font-weight: bold;
+        font-size: 12px; }
         #hd ul#menu li a:hover {
-          background-color: #32768F; }
+          border-top: 3px solid #009ABF; }
 
 #bd {
   clear: both;
-  background-color: #FFFFFF;
-  padding: 20px; }
+  background-color: #F4F2E9;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  #bd h2.page_title {
+    text-transform: uppercase;
+    color: #5F5F5F;
+    font-weight: bold;
+    margin-bottom: 20px; }
+  #bd #sidebar {
+    width: 250px;
+    float: right; }
+  #bd .with-sidebar #main {
+    width: 700px;
+    float: left; }
+  #bd a {
+    color: #009ABF;
+    text-decoration: underline; }
+  #bd h2 {
+    font-weight: bold; }
+    #bd h2 a {
+      text-decoration: none;
+      color: #000000; }
+  #bd .field {
+    margin-bottom: 10px; }
+    #bd .field label {
+      display: block;
+      font-weight: bold; }
+    #bd .field input.small {
+      width: 4em; }
+    #bd .field .note {
+      font-size: 12px;
+      color: #5F5F5F; }
+  #bd #books .book {
+    margin-bottom: 20px; }
+  #bd #book .authors {
+    margin-bottom: 20px; }
+  #bd #book label {
+    font-weight: bold; }
 
 #ft {
-  padding: 5px;
-  padding-left: 20px;
-  background-color: #47869F; }
+  padding: 20px;
+  color: #5F5F5F;
+  font-size: 11px; }
+  #ft a {
+    color: #5F5F5F; }
 
 .clear {
   clear: both; }

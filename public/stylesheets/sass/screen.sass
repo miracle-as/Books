@@ -1,24 +1,31 @@
+!content_width = 950px
+!sidebar_width = 250px
+
 a
   :text-decoration none
 
-html, body
-  :background-color #999999
+.content
+  :width = !content_width
+  :margin auto
+  :text-align left
 
 #hd
-  :background-color #47869F
+  :border-top 3px solid #009ABF
   
   h1
+    :float left
     :font-size 19px
     :background-color #FFFFFF
-    :border-top 3px solid #009ABF
     
     a
       :display block
       :padding 10px
-      :padding-left 20px
+      :padding-left 0px
+      :line-height 31px
       :color #000000
 
   ul#menu
+    :float right
     :display block
     :padding-left 12px
     
@@ -29,20 +36,80 @@ html, body
         :float left
         :display block
         :padding 8px
-        :color #FFFFFF
+        :color #000000
+        :line-height 31px
+        :border-top 3px solid #FFFFFF
+        :text-transform uppercase
+        :color #5F5F5F
+        :font-weight bold
+        :font-size 12px
         
         &:hover
-          :background-color #32768F
+          :border-top 3px solid #009ABF
 
 #bd
   :clear both
-  :background-color #FFFFFF
-  :padding 20px
+  :background-color #F4F2E9
+  :padding-top 20px
+  :padding-bottom 20px
+  
+  h2.page_title
+    :text-transform uppercase
+    :color #5F5F5F
+    :font-weight bold
+    :margin-bottom 20px
+  
+  #sidebar
+    :width = !sidebar_width
+    :float right
+    
+  .with-sidebar #main
+    :width = !content_width - !sidebar_width
+    :float left
+  
+  a
+    :color #009ABF
+    :text-decoration underline
+  
+  h2
+    :font-weight bold
+    
+    a
+      :text-decoration none
+      :color #000000
+  
+  .field
+    :margin-bottom 10px
+  
+    label
+      :display block
+      :font-weight bold
+      
+    input.small
+      :width 4em
+      
+    .note
+      :font-size 12px
+      :color #5F5F5F
+      
+  #books
+    .book
+      :margin-bottom 20px
+      
+  #book
+    .authors
+      :margin-bottom 20px
+      
+    label
+      :font-weight bold
   
 #ft
-  :padding 5px
-  :padding-left 20px
-  :background-color #47869F
+  :padding 20px
+  :color #5F5F5F
+  :font-size 11px
+  
+  a
+    :color #5F5F5F
   
 .clear
   :clear both

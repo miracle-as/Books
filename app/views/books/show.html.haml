@@ -1,0 +1,18 @@
+- title @book.name
+#book
+  %h2= @book.name
+  .authors
+    by
+    %span= @book.author_names
+  
+  .isbn
+    %label ISBN:
+    = @book.isbn
+  
+  .published
+    %label Published:
+    = @book.published
+  
+  .pages
+    %label Pages:
+    = @book.pages

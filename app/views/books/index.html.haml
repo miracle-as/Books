@@ -1,1 +1,11 @@
-= render :partial => @books
+- title 'All books'
+#books= render :partial => @books
+
+- content_for :sidebar do
+  - form_for @book do |f|
+    .field
+      = f.label :isbn, 'ISBN'
+      = f.text_field :isbn
+      .note Leave empty if you don't know the ISBN.
+    
+    = submit_tag 'Create book'
