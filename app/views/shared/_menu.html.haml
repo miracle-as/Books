@@ -1,5 +1,7 @@
-%ul#menu
-  %li= link_to 'Books', books_path
-  %li= link_to 'Authors', authors_path
-.clear
-  %hr
+#menu
+  .content
+    %ul
+      %li= link_to 'Books', books_path, :class => (controller.controller_name == 'books' ? 'current' : nil)
+      %li= link_to 'Authors', authors_path, :class => (controller.controller_name == 'authors' ? 'current' : nil)
+    .clear
+      %hr

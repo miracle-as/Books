@@ -12,7 +12,9 @@
     #hd
       .content
         %h1= link_to 'Books', root_path
-        = render :partial => 'shared/menu'
+        = render :partial => 'search/form'
+
+      = render :partial => 'shared/menu'
       
     #bd
       .content{ :class => sidebar.blank? ? nil : 'with-sidebar' }

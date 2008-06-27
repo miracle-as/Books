@@ -9,7 +9,6 @@ a {
 #hd {
   border-top: 3px solid #009ABF; }
   #hd h1 {
-    float: left;
     font-size: 19px;
     background-color: #FFFFFF; }
     #hd h1 a {
@@ -18,25 +17,26 @@ a {
       padding-left: 0px;
       line-height: 31px;
       color: #000000; }
-  #hd ul#menu {
-    float: right;
-    display: block;
-    padding-left: 12px; }
-    #hd ul#menu li {
-      display: inline; }
-      #hd ul#menu li a {
-        float: left;
-        display: block;
-        padding: 8px;
-        color: #000000;
-        line-height: 31px;
-        border-top: 3px solid #FFFFFF;
-        text-transform: uppercase;
-        color: #5F5F5F;
-        font-weight: bold;
-        font-size: 12px; }
-        #hd ul#menu li a:hover {
-          border-top: 3px solid #009ABF; }
+  #hd #menu {
+    background-color: #98CAD5; }
+    #hd #menu ul {
+      position: relative;
+      left: -10px; }
+      #hd #menu ul li {
+        display: inline; }
+        #hd #menu ul li a {
+          float: left;
+          display: block;
+          padding: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+          color: #000000;
+          text-transform: uppercase;
+          color: #FFFFFF;
+          font-weight: bold;
+          font-size: 12px; }
+          #hd #menu ul li a:hover, #hd #menu ul li a.current {
+            color: #EEEEEE; }
 
 #bd {
   clear: both;

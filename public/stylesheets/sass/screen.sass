@@ -13,7 +13,6 @@ a
   :border-top 3px solid #009ABF
   
   h1
-    :float left
     :font-size 19px
     :background-color #FFFFFF
     
@@ -24,28 +23,30 @@ a
       :line-height 31px
       :color #000000
 
-  ul#menu
-    :float right
-    :display block
-    :padding-left 12px
+  #menu
+    :background-color #98CAD5
+
+    ul
+      :position relative
+      :left -10px
+      
+      li
+        :display inline
     
-    li
-      :display inline
-    
-      a
-        :float left
-        :display block
-        :padding 8px
-        :color #000000
-        :line-height 31px
-        :border-top 3px solid #FFFFFF
-        :text-transform uppercase
-        :color #5F5F5F
-        :font-weight bold
-        :font-size 12px
+        a
+          :float left
+          :display block
+          :padding 5px
+          :padding-left 10px
+          :padding-right 10px
+          :color #000000
+          :text-transform uppercase
+          :color #FFFFFF
+          :font-weight bold
+          :font-size 12px
         
-        &:hover
-          :border-top 3px solid #009ABF
+          &:hover, &.current
+            :color #EEEEEE
 
 #bd
   :clear both
