@@ -15,3 +15,7 @@
     %span.pages
       Pages:
       %span= book.pages
+      
+  - unless book.amazon_detail_page_url.blank?
+    %span.amazon
+      = link_to 'Amazon', book.amazon_detail_page_url

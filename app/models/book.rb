@@ -3,6 +3,8 @@ require 'open-uri'
 class Book < ActiveRecord::Base
   has_many :authorships
   has_many :authors, :through => :authorships
+  has_many :releases
+  has_many :publishers, :through => :releases
   
   validate :must_be_valid_isbn
   validates_uniqueness_of :isbn
@@ -29,10 +31,14 @@ class Book < ActiveRecord::Base
     doc = Hpricot.parse(xml)
 
     (doc/:item).collect do |item|
+      self.amazon_detail_page_url = (item/:detailpageurl).innerHTML
       self.name = (item/:title).innerHTML
       self.pages = (item/:numberofpages).innerHTML
       self.published = (item/:publicationdate).innerHTML
-      puts 'Publisher: ' + (item/:publisher).innerHTML
+      
+      publisher = (item/:publisher).innerHTML
+      publisher = Publisher.find_or_create_by_name(publisher)
+      self.publishers << publisher
 
       (item/:author).each do |author_element|
         name = author_element.innerHTML
