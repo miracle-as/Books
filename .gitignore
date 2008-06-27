@@ -1,0 +1,16 @@
+log/*.log
+tmp/cache/*
+tmp/pids/*
+tmp/sessions/*
+tmp/sockets/*
+.DS_Store
+coverage
+public/cache/**/*
+doc/api
+doc/app
+config/database.yml
+config/deploy.rb
+.project
+.loadpath
+nbproject
+vendor/plugins/goldspike
