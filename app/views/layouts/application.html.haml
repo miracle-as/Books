@@ -1,7 +1,25 @@
 !!! Strict
 %html{ :xmlns => 'http://www.w3.org/1999/xhtml', :lang => "en" }
   %head
-    %title= page_title
+    %title Books
+    = stylesheet_link_tag 'http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css'
+    = stylesheet_link_tag 'screen'
     = yield :head
 
   %body
+    #doc2.yui-t5
+      #hd
+        %h1= link_to 'Books', root_path
+        = render :partial => 'shared/menu'
+        
+      #bd
+        #yui-main
+          .yui-b
+            .yui-g
+              = yield
+
+        .yui-b
+          What
+
+      #ft
+        = render :partial => 'shared/copyright'

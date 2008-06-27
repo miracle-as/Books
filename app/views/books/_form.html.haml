@@ -1,0 +1,7 @@
+- form_for book do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+    
+  .field
+    = submit_tag book.new_record? ? 'Create' : 'Update'
