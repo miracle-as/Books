@@ -2,60 +2,60 @@
 #book
   %h3= @book.name
   .authors
-    by
+    = 'by'[]
     %span= author_names(@book.authors)
     
   - if @book.current_loan
     .borrowed_by
-      %label Borrowed by:
+      %label= 'Borrowed by'[] + ':'
       = @book.current_loan.user.login + ','
       = time_ago_in_words(@book.current_loan.check_out) + ' ago'
   
   .isbn-10
-    %label ISBN-10:
+    %label= 'ISBN-10'[] + ':'
     = @book.isbn_10
 
   .isbn-13
-    %label ISBN-13:
+    %label= 'ISBN-13'[] + ':'
     = @book.isbn_13
   
   - unless @book.published.blank?
     .published
-      %label Published:
+      %label= 'Published'[] + ':'
       = @book.published
   
   - unless @book.pages.blank?
     .pages
-      %label Pages:
+      %label= 'Pages'[] + ':'
       = @book.pages
       
   .added
-    %label Added:
+    %label= 'Added to library'[] + ':'
     = @book.created_at.to_date
   
   - if @loans.size > 0
     .loans
-      %h2 Who borrowed this book in the past?
+      %h2= 'Who borrowed this book in the past?'[:who_borrowed_this_book]
       %table.list
         %thead
           %tr
-            %th User
-            %th Check out
-            %th Check in
+            %th= 'User'[]
+            %th= 'Check out'[]
+            %th= 'Check in'[]
         %tbody
         - @loans.each do |loan|
           %tr
             %td= loan.user.login
             %td= loan.check_out.to_date
-            %td= loan.check_in.blank? ? 'not yet' : loan.check_in.to_date
+            %td= loan.check_in.blank? ? 'Not checked in'[] : loan.check_in.to_date
 
   - content_for :sidebar do
     - if_authorized?(:create, Loan) do
       .loan
         - if @book.current_loan.blank? || @book.current_loan.user_id != current_user.id
-          = link_to 'Borrow', book_loans_path(@book), :method => :post
+          = link_to 'Borrow'[], book_loans_path(@book), :method => :post
         - else
-          = link_to 'Return', loan_path(@book.current_loan), :method => :delete
+          = link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
 
     - if @book.large_image_id
       .cover= link_to @book.medium_image.image_tag, @book.amazon_detail_page_url, :target => '_blank'

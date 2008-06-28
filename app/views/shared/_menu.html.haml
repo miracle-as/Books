@@ -1,24 +1,23 @@
 #menu
   .content
     %ul
-      %li= link_to 'Dashboard', root_path, :class => (controller.controller_name == 'dashboard' ? 'current' : nil)
-      %li= link_to 'Books', books_path, :class => (controller.controller_name == 'books' ? 'current' : nil)
-      %li= link_to 'Authors', authors_path, :class => (controller.controller_name == 'authors' ? 'current' : nil)
-      %li= link_to 'Loans', loans_path, :class => (controller.controller_name == 'loans' ? 'current' : nil)
+      %li= link_to 'Dashboard'[], root_path, :class => (controller.controller_name == 'dashboard' ? 'current' : nil)
+      %li= link_to 'Books'[], books_path, :class => (controller.controller_name == 'books' ? 'current' : nil)
+      %li= link_to 'Authors'[], authors_path, :class => (controller.controller_name == 'authors' ? 'current' : nil)
+      %li= link_to 'Loans'[], loans_path, :class => (controller.controller_name == 'loans' ? 'current' : nil)
       
     %ul.user-menu
       - if logged_in?
         %li
           .notes
-            Logged in as
-            = current_user.login
-        %li= link_to 'Log out', logout_path, { :title => 'Log out' }
+            = 'Logged in as {user}'[:logged_in_as_user, current_user.login]
+        %li= link_to 'Log out'[], logout_path, { :title => 'Log out'[] }
       - else
         %li
           .notes
-            Not logged in
-        %li= link_to 'Log in', login_path, { :title => 'Log in' }
-        %li= link_to 'Sign up', signup_path, { :title => 'Create an account' }
+            = 'Not logged in'[]
+        %li= link_to 'Log in'[], login_path, { :title => 'Log in'[] }
+        %li= link_to 'Sign up'[], signup_path, { :title => 'Create an account'[] }
 
     .clear
       %hr

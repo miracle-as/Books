@@ -1,19 +1,19 @@
 = error_messages_for :book
 - form_for book do |f|
   .field
-    = f.label :name
+    = f.label :name, 'Title'[]
     = f.text_field :name
 
   .field
-    = f.label :isbn, 'ISBN'
+    = f.label :isbn, 'ISBN'[]
     = f.text_field :isbn
 
   .field
-    = f.label :pages
+    = f.label :pages, 'Pages'[]
     = f.text_field :pages, :class => 'small'
 
   .field
-    = f.label :published
+    = f.label :published, 'Published'[]
     = f.date_select :published
 
-  = submit_tag book.new_record? ? 'Create' : 'Update'
+  = submit_tag book.new_record? ? 'Add'[] : 'Update'[]

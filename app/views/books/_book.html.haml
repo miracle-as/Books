@@ -7,22 +7,22 @@
   
     - if book.authors.size > 0
       %span.authors
-        by
+        = 'by'[]
         %span= author_names(book.authors)
     
     - if book.current_loan.blank?
-      Available,
+      = 'Available'[] + ','
     - else
-      Out,
+      = 'Out'[] + ','
       
     - unless book.published.blank?
       %span.published
-        %label Published:
+        %label= 'Published'[] + ':'
         = book.published
       
     - unless book.pages.blank?
       %span.pages
-        %label Pages:
+        %label= 'Pages'[] + ':'
         = book.pages
 
   .clear

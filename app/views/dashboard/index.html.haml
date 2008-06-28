@@ -1,12 +1,12 @@
-- title 'Dashboard'
-%h2 5 latest books in the library
+- title 'Dashboard'[]
+%h2= '{count} latest books in the library'[:x_latest_books_in_library, 5]
 #books= render :partial => @books
 
 - if logged_in?
   - content_for :right_column do
-    %h2 Your loans
+    %h2= 'Your loans'[]
     #loans
       - if @loans.size > 0
         #books= render :partial => @loans.collect(&:book)
       - else
-        You have no books on loan.
+        = 'You have no books on loan.'[:no_books_on_loan]

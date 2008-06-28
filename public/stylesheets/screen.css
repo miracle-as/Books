@@ -110,7 +110,7 @@ a {
     float: left; }
   #bd table.list thead th {
     font-weight: bold; }
-  #bd table.list tr td {
+  #bd table.list tr td, #bd table.list tr th {
     padding-right: 10px; }
   #bd a {
     color: #009ABF;

@@ -13,7 +13,7 @@
   %body
     #hd
       .content
-        %h1= link_to 'Books', root_path
+        %h1= link_to 'Books'[:application_name], root_path
         .search= render :partial => 'searches/form'
 
       = render :partial => 'shared/menu'
@@ -33,6 +33,6 @@
     #ft
       .content
         .stats
-          %label Books in database:
+          %label= 'Books in database'[] + ':'
           = Book.count
         = render :partial => 'shared/copyright'

@@ -1,15 +1,15 @@
-- title 'All books'
+- title 'All books'[]
 - javascript 'endless_book_page'
 #books= render :partial => @books
 
-%p#loading Loading more books...
+%p#loading= 'Loading more books...'[:loading_more_books]
 
 - if_authorized?(:create, Book) do
   - content_for :sidebar do
     - form_for @book do |f|
       .field
-        = f.label :isbn, 'ISBN'
+        = f.label :isbn, 'ISBN'[]
         = f.text_field :isbn, :class => 'medium'
-        .note Leave empty if you don't know the ISBN.
+        .note= "Leave empty if you don't know the ISBN."[:leave_empty_on_unknown_isbn]
     
-      = submit_tag 'Create book', :disable_with => 'Creating' + '&hellip;'
+      = submit_tag 'Add book'[], :disable_with => 'Adding'[] + '&hellip;'

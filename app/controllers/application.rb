@@ -16,9 +16,15 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   before_filter :initialize_empty_search
+
+  around_filter :set_language
   
   protected
   def initialize_empty_search
     @search = Search.new
+  end
+  
+  def set_language
+    Gibberish.use_language('da') { yield }
   end
 end

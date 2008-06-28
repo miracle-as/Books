@@ -1,13 +1,11 @@
-- title "Search for '#{@search.keywords}'"
+- title "Search for '{keywords}'"[:search_for_keywords, @search.keywords]
 
 - if @books.size > 0
   %h2
-    Books
-    = "(#{@books.size} results)"
+    = 'Books ({results} results)'[:book_results, @books.size]
   #books= render :partial => @books
   
 - if @authors.size > 0
   %h2
-    Authors
-    = "(#{@authors.size} results)"
+    = 'Authors ({results} results)'[:author_results, @authors.size]
   #authors= render :partial => @authors

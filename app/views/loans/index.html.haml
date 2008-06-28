@@ -1,5 +1,5 @@
-- title 'Your loans'
+- title 'Your loans'[]
 - if @loans.size > 0
   #books= render :partial => @loans.collect(&:book)
 - else
-  You have no books on loan.
+  = 'You have no books on loan.'[:no_books_on_loan]

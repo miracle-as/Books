@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def formatted_page_title
-    'Books' + (@page_title.blank? ? '' : ' - ' + @page_title)
+    'Books'[:application_name] + (@page_title.blank? ? '' : ' - ' + @page_title)
   end
 
   def javascript(*args)
