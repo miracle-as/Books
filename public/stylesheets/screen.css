@@ -85,8 +85,16 @@ a {
         text-align: left; }
       #bd #sidebar #loans #books .published, #bd #sidebar #loans #books .pages {
         display: none; }
+  #bd #right-column {
+    width: 495px;
+    float: right; }
+    #bd #right-column .container {
+      margin-left: 40px; }
   #bd .with-sidebar #main {
     width: 690px;
+    float: left; }
+  #bd .with-right-column #main {
+    width: 455px;
     float: left; }
   #bd a {
     color: #009ABF;
@@ -119,9 +127,11 @@ a {
       text-align: right; }
       #bd #books .book .image img {
         vertical-align: top; }
-    #bd #books .book .authors {
-      display: block;
-      margin-bottom: 1em; }
+    #bd #books .book .meta {
+      margin-left: 75px; }
+      #bd #books .book .meta .authors {
+        display: block;
+        margin-bottom: 1em; }
     #bd #books .book label {
       font-weight: bold; }
   #bd #book .authors {

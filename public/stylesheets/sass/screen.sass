@@ -112,8 +112,19 @@ a
         .published, .pages
           :display none
     
+  #right-column
+    :width = !content_width / 2 + !column_spacing / 2
+    :float right
+
+    .container
+      :margin-left = !column_spacing
+    
   .with-sidebar #main
     :width = !content_width - !sidebar_width - !column_spacing
+    :float left
+  
+  .with-right-column #main
+    :width = !content_width / 2 - !column_spacing / 2
     :float left
   
   a
@@ -159,10 +170,13 @@ a
         
         img
           :vertical-align top
+          
+      .meta
+        :margin-left 75px
         
-      .authors
-        :display block
-        :margin-bottom 1em
+        .authors
+          :display block
+          :margin-bottom 1em
         
       label
         :font-weight bold

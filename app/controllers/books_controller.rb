@@ -1,10 +1,12 @@
 class BooksController < ApplicationController
+  before_filter :login_required, :only => :create
+  
   def per_page
     10
   end
   
   def index
-    @books = Book.paginate(:order => 'created_at DESC', :include => [ :authors, :loans, :small_image ], :page => params[:page], :per_page => per_page)
+    @books = Book.paginate(:order => 'name', :include => [ :authors, :loans, :small_image ], :page => params[:page], :per_page => per_page)
     @book = Book.new
   end
 

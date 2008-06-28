@@ -9,22 +9,23 @@
   - unless book.small_image_id.blank?
     .image= link_to book.small_image.image_tag, book
 
-  %h3= link_to book.name, book
+  .meta
+    %h3= link_to book.name, book
   
-  - if book.authors.size > 0
-    %span.authors
-      by
-      %span= author_names(book.authors)
+    - if book.authors.size > 0
+      %span.authors
+        by
+        %span= author_names(book.authors)
       
-  - unless book.published.blank?
-    %span.published
-      %label Published:
-      = book.published
+    - unless book.published.blank?
+      %span.published
+        %label Published:
+        = book.published
       
-  - unless book.pages.blank?
-    %span.pages
-      %label Pages:
-      = book.pages
+    - unless book.pages.blank?
+      %span.pages
+        %label Pages:
+        = book.pages
 
   .clear
     %hr

@@ -1,4 +1,5 @@
 - sidebar = yield :sidebar
+- right_column = yield :right_column
 
 !!! Strict
 %html{ :xmlns => 'http://www.w3.org/1999/xhtml', :lang => "en" }
@@ -18,12 +19,16 @@
       = render :partial => 'shared/menu'
       
     #bd
-      .content{ :class => sidebar.blank? ? nil : 'with-sidebar' }
+      .content{ :class => sidebar.blank? ? (right_column.blank? ? nil : 'with-right-column') : 'with-sidebar' }
         - unless @page_title.blank?
           %h2.page_title&= @page_title
         #main= yield
-        #sidebar
-          .container= sidebar
+        - unless sidebar.blank?
+          #sidebar
+            .container= sidebar
+        - unless right_column.blank?
+          #right-column
+            .container= right_column
 
     #ft
       .content

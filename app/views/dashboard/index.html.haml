@@ -1,8 +1,9 @@
 - title 'Dashboard'
+%h2 5 latest books in the library
 #books= render :partial => @books
 
 - if logged_in?
-  - content_for :sidebar do
+  - content_for :right_column do
     %h2 Your loans
     #loans
       #books= render :partial => @loans.collect(&:book)
