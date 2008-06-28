@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
     books.resources :loans
   end
   map.resources :authors
+  map.resources :publishers
   map.resources :searches
   map.resources :loans
 end

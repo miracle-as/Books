@@ -16,7 +16,7 @@
   
   .publisher
     %label= 'Publisher'[] + ':'
-    = @book.publisher.name
+    = link_to @book.publisher.name, @book.publisher
   
   .isbn-10
     %label= 'ISBN-10'[] + ':'

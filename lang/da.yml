@@ -6,6 +6,7 @@ books_in_database: Bøger i databasen
 dashboard: Oversigt
 books: Bøger
 authors: Forfattere
+publishers: Forlag
 loans: Udlån
 
 logged_in_as_user: Logget ind som {user}
@@ -42,6 +43,7 @@ out: Udlånt
 published: Udgivet
 pages: Sider
 
+publisher: Forlag
 borrowed_by: Udlånt til
 added_to_library: Tilføjet til biblioteket
 who_borrowed_this_book: Hvem har lånt denne bog?
@@ -66,3 +68,5 @@ book_results: Bøger ({results} resultater)
 author_results: Forfattere ({results} resultater)
 
 no_cover: Intet cover-billede tilgængeligt
+
+all_publishers: Alle forlag
