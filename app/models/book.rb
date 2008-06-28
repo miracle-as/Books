@@ -32,7 +32,7 @@ class Book < ActiveRecord::Base
 
   protected
   def must_be_valid_isbn
-    errors.add :isbn, 'must be valid' unless ISBN_Tools.is_valid?(self.isbn)
+    errors.add :isbn, 'is invalid' unless ISBN_Tools.is_valid?(self.isbn)
   end
 
   def cleanup_isbn

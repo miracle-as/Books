@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20080628000441) do
   end
 
   create_table "authorships", :force => true do |t|
-    t.integer  "book_id"
-    t.integer  "author_id"
+    t.integer  "book_id",    :limit => 11
+    t.integer  "author_id",  :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,27 +27,27 @@ ActiveRecord::Schema.define(:version => 20080628000441) do
   create_table "books", :force => true do |t|
     t.string   "name"
     t.string   "isbn"
-    t.integer  "pages"
+    t.integer  "pages",                  :limit => 11
     t.date     "published"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "amazon_detail_page_url"
-    t.integer  "small_image_id"
-    t.integer  "medium_image_id"
-    t.integer  "large_image_id"
+    t.integer  "small_image_id",         :limit => 11
+    t.integer  "medium_image_id",        :limit => 11
+    t.integer  "large_image_id",         :limit => 11
   end
 
   create_table "images", :force => true do |t|
     t.string   "url"
-    t.integer  "width"
-    t.integer  "height"
+    t.integer  "width",      :limit => 11
+    t.integer  "height",     :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "loans", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "book_id"
+    t.integer  "user_id",    :limit => 11
+    t.integer  "book_id",    :limit => 11
     t.datetime "check_out"
     t.datetime "check_in"
     t.datetime "created_at"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20080628000441) do
   end
 
   create_table "releases", :force => true do |t|
-    t.integer  "publisher_id"
-    t.integer  "book_id"
+    t.integer  "publisher_id", :limit => 11
+    t.integer  "book_id",      :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
