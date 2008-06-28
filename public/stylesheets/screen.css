@@ -67,10 +67,14 @@ a {
     text-transform: uppercase;
     margin-bottom: 20px; }
   #bd #sidebar {
-    width: 240px;
+    width: 260px;
     float: right; }
+    #bd #sidebar .container {
+      margin-left: 40px; }
+    #bd #sidebar .cover {
+      text-align: right; }
   #bd .with-sidebar #main {
-    width: 710px;
+    width: 690px;
     float: left; }
   #bd a {
     color: #009ABF;
@@ -97,9 +101,10 @@ a {
     #bd #books .book .loan {
       float: right; }
     #bd #books .book .image {
-      width: 57px;
+      width: 65px;
       float: left;
-      margin-right: 10px; }
+      margin-right: 10px;
+      text-align: center; }
       #bd #books .book .image img {
         vertical-align: top; }
     #bd #books .book .authors {
@@ -115,10 +120,6 @@ a {
     margin-top: 1em; }
   #bd #book label {
     font-weight: bold; }
-  #bd #sidebar .container {
-    margin-left: 20px; }
-  #bd #sidebar .cover {
-    text-align: right; }
 
 #ft {
   padding: 20px;

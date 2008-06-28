@@ -1,5 +1,6 @@
 !content_width = 950px
-!sidebar_width = 240px
+!sidebar_width = 220px
+!column_spacing = 40px
 
 a
   :text-decoration none
@@ -83,11 +84,17 @@ a
     :margin-bottom 20px
 
   #sidebar
-    :width = !sidebar_width
+    :width = !sidebar_width + !column_spacing
     :float right
+
+    .container
+      :margin-left = !column_spacing
+
+    .cover
+      :text-align right
     
   .with-sidebar #main
-    :width = !content_width - !sidebar_width
+    :width = !content_width - !sidebar_width - !column_spacing
     :float left
   
   a
@@ -126,9 +133,10 @@ a
         :float right
       
       .image
-        :width 57px
+        :width 65px
         :float left
         :margin-right 10px
+        :text-align center
         
         img
           :vertical-align top
@@ -152,13 +160,6 @@ a
 
     label
       :font-weight bold
-
-  #sidebar
-    .container
-      :margin-left 20px
-  
-    .cover
-      :text-align right
 
 #ft
   :padding 20px
