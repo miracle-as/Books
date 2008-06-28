@@ -1,0 +1,64 @@
+application_name: Books
+
+sentence_connector: og
+
+books_in_database: Bøger i databasen
+dashboard: Oversigt
+books: Bøger
+authors: Forfattere
+loans: Udlån
+
+logged_in_as_user: Logget ind som {user}
+log_out: Log af
+not_logged_in: Ikke logget ind
+log_in: Log ind
+sign_up: Opret konto
+create_an_account: Opret en konto
+
+login: Brugernavn
+password: Kodeord
+remember_me: Husk mig
+
+sign_up_as_a_new_user: Opret en konto
+email: E-mail
+confirm_password: Bekræft kodeord
+
+x_latest_books_in_library: Seneste {count} bøger i biblioteket
+your_loans: Dine udlån
+no_books_on_loan: Du har ikke lånt nogen bøger.
+
+all_books: Alle bøger
+loading_more_books: Henter flere bøger...
+leave_empty_on_unknown_isbn: Efterlad tom hvis ISBN er ukendt.
+add_book: Tilføj bog
+adding: Tilføjer
+isbn: ISBN
+
+by: af
+available: Hjemme
+out: Udlånt
+published: Udgivet
+pages: Sider
+
+borrowed_by: Udlånt til
+added_to_library: Tilføjet til biblioteket
+who_borrowed_this_book: Hvem har lånt denne bog?
+user: Bruger
+check_out: Udlånt
+check_in: Afleveret
+not_checked_in: Ikke afleveret
+
+borrow: Lån
+return: Aflever
+
+title: Titel
+add: Tilføj
+update: Opdater
+
+all_authors: Alle forfattere
+
+search: Søg
+
+search_for_keywords: Søgning på '{keywords}'
+book_results: Bøger ({results} resultater)
+author_results: Forfattere ({results} resultater)
