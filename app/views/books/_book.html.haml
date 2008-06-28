@@ -9,6 +9,11 @@
       %span.authors
         by
         %span= author_names(book.authors)
+    
+    - if book.current_loan.blank?
+      Available,
+    - else
+      Out,
       
     - unless book.published.blank?
       %span.published
