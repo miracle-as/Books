@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class DashboardControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  context "on GET to :index when not logged in" do
+    setup do
+      get :index
+    end
+    
+    should_assign_to :books
+    should_not_assign_to :loans
+    should_respond_with :success
+    should_render_template :index
+    should_not_set_the_flash
   end
 end
