@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
+  def per_page
+    10
+  end
+  
   def index
-    @books = Book.all(:limit => 5, :order => 'created_at DESC', :include => [ :authors, :loans, :small_image ])
+    @books = Book.paginate(:order => 'created_at DESC', :include => [ :authors, :loans, :small_image ], :page => params[:page], :per_page => per_page)
     @book = Book.new
   end
 
@@ -15,7 +19,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(params[:book])
-    if @book.save
+    if @book.save && !@book.name.blank?
       redirect_to books_url
     else
       @book = Book.new if params[:book] == { 'isbn' => '' }

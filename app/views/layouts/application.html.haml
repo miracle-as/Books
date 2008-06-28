@@ -6,6 +6,7 @@
     %title&= formatted_page_title
     = stylesheet_link_tag 'http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css'
     = stylesheet_link_tag 'screen'
+    = javascript_include_tag :defaults
     = yield :head
 
   %body
@@ -26,7 +27,7 @@
 
     #ft
       .content
-        = render :partial => 'shared/copyright'
         .stats
           %label Books in database:
           = Book.count
+        = render :partial => 'shared/copyright'

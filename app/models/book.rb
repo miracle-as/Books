@@ -19,7 +19,7 @@ class Book < ActiveRecord::Base
   after_create :initialize_from_amazon
   
   def current_loan
-    loans.select { |l| l.check_in.blank? }.first
+    @current_loan ||= loans.active.first
   end
   
   def isbn_10

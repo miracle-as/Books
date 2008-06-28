@@ -1,5 +1,8 @@
-- title 'Latest books'
+- title 'All books'
+- javascript 'endless_book_page'
 #books= render :partial => @books
+
+%p#loading Loading more books...
 
 - content_for :sidebar do
   - form_for @book do |f|

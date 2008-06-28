@@ -1,0 +1,6 @@
+page.insert_html :bottom, :books, :partial => @books
+if @books.total_pages > @books.current_page
+  page.call 'checkScroll'
+else
+  page[:loading].hide
+end

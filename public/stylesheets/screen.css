@@ -43,10 +43,10 @@ a {
           font-weight: bold;
           font-size: 12px; }
           #hd #menu ul li a:hover, #hd #menu ul li a.current {
-            color: #EEEEEE; }
+            color: #F4F2E9; }
         #hd #menu ul li .notes {
           float: left;
-          color: #EEEEEE;
+          color: #F4F2E9;
           font-size: 12px;
           padding: 5px; }
     #hd #menu ul.user-menu {

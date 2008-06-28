@@ -1,2 +1,11 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+function nearBottomOfPage() {
+  return scrollDistanceFromBottom() < 80;
+}
+
+function scrollDistanceFromBottom(argument) {
+  return pageHeight() - (window.pageYOffset + self.innerHeight);
+}
+
+function pageHeight() {
+  return Math.max(document.body.scrollHeight, document.body.offsetHeight);
+}
