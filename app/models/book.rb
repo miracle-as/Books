@@ -17,29 +17,29 @@ class Book < ActiveRecord::Base
 
   before_validation :cleanup_isbn
   after_create :initialize_from_amazon
-  
+
   def current_loan
     @current_loan ||= loans.active.first
   end
-  
+
   def isbn_10
     ISBN_Tools.hyphenate_isbn10(self.isbn)
   end
-  
+
   def isbn_13
     ISBN_Tools.hyphenate_isbn13(ISBN_Tools.isbn10_to_isbn13(self.isbn))
   end
-  
+
   protected
   def must_be_valid_isbn
     errors.add :isbn, 'must be valid' unless ISBN_Tools.is_valid?(self.isbn)
   end
-  
+
   def cleanup_isbn
     self.isbn = ISBN_Tools.isbn13_to_isbn10(self.isbn) if ISBN_Tools.is_valid_isbn13?(self.isbn)
     self.isbn = ISBN_Tools.cleanup(self.isbn)
   end
-  
+
   def initialize_from_amazon
     return unless self.name.blank?
     xml = open("http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&SubscriptionId=1VMAHZW8XQ31ER6CAWG2&Operation=ItemLookup&ResponseGroup=Medium&ItemId=#{self.isbn}").read
