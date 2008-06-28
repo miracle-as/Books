@@ -14,6 +14,6 @@ class LoansController < ApplicationController
   def destroy
     loan = Loan.find(params[:id])
     loan.update_attribute :check_in, Time.now
-    redirect_to loans_url
+    redirect_to loan.book
   end
 end

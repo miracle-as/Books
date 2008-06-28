@@ -92,7 +92,21 @@ a
 
     .cover
       :text-align right
-      
+
+    .loan
+      :margin-bottom 1em
+    
+      a
+        :display block
+        :text-align center
+        :background-color #98CAD5
+        :padding 10px
+        :color #FFFFFF
+        :font-weight bold
+        :text-decoration none
+        :text-transform uppercase
+        :border 1px solid #009ABF
+
     #loans
       #books
         :font-size 12px
@@ -126,6 +140,14 @@ a
   .with-right-column #main
     :width = !content_width / 2 - !column_spacing / 2
     :float left
+    
+  table.list
+    thead th
+      :font-weight bold
+  
+    tr
+      td
+        :padding-right 10px
   
   a
     :color #009ABF
@@ -159,9 +181,6 @@ a
     .book
       :margin-bottom 20px
 
-      .loan
-        :float right
-      
       .image
         :width 65px
         :float left
@@ -193,6 +212,10 @@ a
 
     label
       :font-weight bold
+      
+    .loans
+      h2
+        :margin-top 1em
 
 #ft
   :padding 20px

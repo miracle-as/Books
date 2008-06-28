@@ -6,4 +6,7 @@
   - content_for :right_column do
     %h2 Your loans
     #loans
-      #books= render :partial => @loans.collect(&:book)
+      - if @loans.size > 0
+        #books= render :partial => @loans.collect(&:book)
+      - else
+        You have no books on loan.
