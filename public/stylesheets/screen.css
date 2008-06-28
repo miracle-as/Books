@@ -31,24 +31,21 @@ a {
       display: block; }
       #hd #menu ul li {
         display: inline; }
-        #hd #menu ul li a {
+        #hd #menu ul li a, #hd #menu ul li .notes {
           float: left;
-          display: block;
           padding: 5px;
           padding-left: 10px;
           padding-right: 10px;
-          color: #000000;
+          font-size: 12px; }
+        #hd #menu ul li a {
+          display: block;
           text-transform: uppercase;
           color: #FFFFFF;
-          font-weight: bold;
-          font-size: 12px; }
+          font-weight: bold; }
           #hd #menu ul li a:hover, #hd #menu ul li a.current {
             color: #F4F2E9; }
         #hd #menu ul li .notes {
-          float: left;
-          color: #F4F2E9;
-          font-size: 12px;
-          padding: 5px; }
+          color: #F4F2E9; }
     #hd #menu ul.user-menu {
       left: auto;
       right: -10px;
