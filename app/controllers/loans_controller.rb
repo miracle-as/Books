@@ -2,7 +2,7 @@ class LoansController < ApplicationController
   before_filter :login_required
 
   def index
-    @loans = current_user.loans.all(:order => 'check_out', :conditions => { :check_in => nil })
+    @loans = current_user.loans.all(:order => 'check_out', :conditions => { :check_in => nil }, :include => {:book => [ :authors, :loans, :small_image ]})
   end
 
   def create

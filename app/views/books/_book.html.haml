@@ -1,7 +1,7 @@
 .book
   - if_authorized?(:create, Loan) do
     .loan
-      - if book.current_loan.blank? || book.current_loan.user != current_user
+      - if book.current_loan.blank? || book.current_loan.user_id != current_user.id
         = link_to 'Borrow', book_loans_path(book), :method => :post
       - else
         = link_to 'Return', loan_path(book.current_loan), :method => :delete

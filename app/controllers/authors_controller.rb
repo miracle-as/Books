@@ -5,6 +5,6 @@ class AuthorsController < ApplicationController
   
   def show
     @author = Author.find(params[:id])
-    @books = @author.books.all(:order => 'name')
+    @books = @author.books.all(:order => 'name', :include => [ :loans, :small_image ])
   end
 end

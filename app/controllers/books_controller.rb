@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all(:limit => 5, :order => 'created_at DESC')
+    @books = Book.all(:limit => 5, :order => 'created_at DESC', :include => [ :authors, :loans, :small_image ])
     @book = Book.new
   end
 
