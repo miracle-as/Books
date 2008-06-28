@@ -1,6 +1,9 @@
 .book
-  - unless book.small_image_id.blank?
-    .image= link_to book.small_image.image_tag, book
+  .image
+    - unless book.small_image_id.blank?
+      = link_to book.small_image.image_tag, book
+    - else
+      = link_to image_tag('no_cover.png', :alt => 'No cover image available'[:no_cover]), book
 
   .meta
     %h3= link_to book.name, book

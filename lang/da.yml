@@ -62,3 +62,5 @@ search: Søg
 search_for_keywords: Søgning på '{keywords}'
 book_results: Bøger ({results} resultater)
 author_results: Forfattere ({results} resultater)
+
+no_cover: Intet cover-billede tilgængeligt
