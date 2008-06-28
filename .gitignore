@@ -10,6 +10,7 @@ public/cache/**/*
 doc/api
 doc/app
 config/database.yml
+config/amazon.yml
 config/deploy.rb
 .project
 .loadpath

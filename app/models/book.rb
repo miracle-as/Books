@@ -42,7 +42,7 @@ class Book < ActiveRecord::Base
 
   def initialize_from_amazon
     return unless self.name.blank?
-    xml = open("http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&SubscriptionId=1VMAHZW8XQ31ER6CAWG2&Operation=ItemLookup&ResponseGroup=Medium&ItemId=#{self.isbn}").read
+    xml = open("http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&SubscriptionId=#{AMAZON_CONF['subscription_id']}&Operation=ItemLookup&ResponseGroup=Medium&ItemId=#{self.isbn}").read
     doc = Hpricot.parse(xml)
 
     (doc/:item).collect do |item|
