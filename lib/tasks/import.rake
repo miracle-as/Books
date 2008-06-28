@@ -5,10 +5,10 @@ namespace :books do
     FasterCSV.foreach(file, { :headers => :first_row }) do |row|
       book = Book.create(:isbn => row['ISBN'])
       if book.name.blank?
-        book.name = row['Title']
-        book.pages = row['Pages']
+        book.name = row['Title'].strip
+        book.pages = row['Pages'].strip
 
-        release = row['Release']
+        release = row['Release'].strip
         unless release.blank?
           # Fix Danish month abbreviations
           release.gsub!(/okt/, 'oct')
@@ -19,7 +19,7 @@ namespace :books do
         book.save
 
         row['Author'].split(",").each do |name|
-          author = Author.find_or_create_by_name(name)
+          author = Author.find_or_create_by_name(name.strip)
           book.authors << author
         end
       end
