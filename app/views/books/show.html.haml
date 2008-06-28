@@ -1,5 +1,8 @@
 - title @book.name
 #book
+  - if_authorized?(:edit, Book) do
+    .edit_link= link_to 'Edit'[], edit_book_path(@book)
+
   %h3= @book.name
   .authors
     = 'by'[]
@@ -10,6 +13,10 @@
       %label= 'Borrowed by'[] + ':'
       = @book.current_loan.user.login + ','
       = time_ago_in_words(@book.current_loan.check_out) + ' ago'
+  
+  .publisher
+    %label= 'Publisher'[] + ':'
+    = @book.publisher.name
   
   .isbn-10
     %label= 'ISBN-10'[] + ':'

@@ -148,9 +148,7 @@ a {
         margin-bottom: 1em; }
     #bd #books .book label {
       font-weight: bold; }
-  #bd #book .authors {
-    margin-bottom: 1em; }
-  #bd #book .borrowed_by {
+  #bd #book .edit_link, #bd #book .authors, #bd #book .borrowed_by {
     margin-bottom: 1em; }
   #bd #book .added {
     margin-top: 1em; }

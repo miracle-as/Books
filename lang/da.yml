@@ -31,8 +31,10 @@ all_books: Alle bøger
 loading_more_books: Henter flere bøger...
 leave_empty_on_unknown_isbn: Efterlad tom hvis ISBN er ukendt.
 add_book: Tilføj bog
+edit_book: Rediger bog
 adding: Tilføjer
 isbn: ISBN
+edit: Rediger
 
 by: af
 available: Hjemme

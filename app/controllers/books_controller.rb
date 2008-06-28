@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :login_required, :only => :create
+  before_filter :login_required, :only => [:new, :create, :edit, :update]
   
   def per_page
     10
@@ -26,6 +26,19 @@ class BooksController < ApplicationController
     else
       @book = Book.new if params[:book] == { 'isbn' => '' }
       render :action => 'new'
+    end
+  end
+  
+  def edit
+    @book = Book.find(params[:id])
+  end
+  
+  def update
+    @book = Book.find(params[:id])
+    if @book.update_attributes(params[:book])
+      redirect_to @book
+    else
+      render :action => 'edit'
     end
   end
 end

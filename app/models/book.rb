@@ -3,8 +3,7 @@ require 'open-uri'
 class Book < ActiveRecord::Base
   has_many :authorships
   has_many :authors, :through => :authorships
-  has_many :releases
-  has_many :publishers, :through => :releases
+  belongs_to :publisher
   has_many :loans
   has_many :users, :through => :loans
 
@@ -57,7 +56,7 @@ class Book < ActiveRecord::Base
 
       publisher = (item/:publisher).innerHTML
       publisher = Publisher.find_or_create_by_name(publisher)
-      self.publishers << publisher
+      self.publisher = publisher
 
       (item/:author).each do |author_element|
         name = author_element.innerHTML

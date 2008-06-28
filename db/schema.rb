@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20080628000441) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "amazon_detail_page_url"
+    t.integer  "publisher_id",           :limit => 11
     t.integer  "small_image_id",         :limit => 11
     t.integer  "medium_image_id",        :limit => 11
     t.integer  "large_image_id",         :limit => 11
@@ -56,13 +57,6 @@ ActiveRecord::Schema.define(:version => 20080628000441) do
 
   create_table "publishers", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "releases", :force => true do |t|
-    t.integer  "publisher_id", :limit => 11
-    t.integer  "book_id",      :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
