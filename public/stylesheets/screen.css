@@ -67,10 +67,10 @@ a {
     text-transform: uppercase;
     margin-bottom: 20px; }
   #bd #sidebar {
-    width: 220px;
+    width: 240px;
     float: right; }
   #bd .with-sidebar #main {
-    width: 730px;
+    width: 710px;
     float: left; }
   #bd a {
     color: #009ABF;
@@ -93,8 +93,7 @@ a {
       font-size: 12px;
       color: #5F5F5F; }
   #bd #books .book {
-    margin-bottom: 20px;
-    margin-right: 20px; }
+    margin-bottom: 20px; }
     #bd #books .book .loan {
       float: right; }
     #bd #books .book .image {
@@ -116,6 +115,8 @@ a {
     margin-top: 1em; }
   #bd #book label {
     font-weight: bold; }
+  #bd #sidebar .container {
+    margin-left: 20px; }
   #bd #sidebar .cover {
     text-align: right; }
 

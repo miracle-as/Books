@@ -21,7 +21,8 @@
         - unless @page_title.blank?
           %h2.page_title&= @page_title
         #main= yield
-        #sidebar= sidebar
+        #sidebar
+          .container= sidebar
 
     #ft
       .content
