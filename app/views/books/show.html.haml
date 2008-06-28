@@ -3,7 +3,7 @@
   %h3= @book.name
   .authors
     by
-    %span= @book.author_names
+    %span= author_names(@book.authors)
     
   - if @book.current_loan
     .borrowed_by

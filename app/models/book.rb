@@ -18,10 +18,6 @@ class Book < ActiveRecord::Base
   before_validation :cleanup_isbn
   after_create :initialize_from_amazon
   
-  def author_names
-    self.authors.collect(&:name).sort.to_sentence(:skip_last_comma => true)
-  end
-  
   def current_loan
     loans.select { |l| l.check_in.blank? }.first
   end

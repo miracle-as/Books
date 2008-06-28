@@ -14,7 +14,7 @@
   - if book.authors.size > 0
     %span.authors
       by
-      %span= book.author_names
+      %span= author_names(book.authors)
       
   - unless book.published.blank?
     %span.published

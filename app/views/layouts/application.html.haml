@@ -27,3 +27,6 @@
     #ft
       .content
         = render :partial => 'shared/copyright'
+        .stats
+          %label Books in database:
+          = Book.count

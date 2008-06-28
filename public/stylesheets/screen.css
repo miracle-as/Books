@@ -126,6 +126,8 @@ a {
   font-size: 11px; }
   #ft a {
     color: #5F5F5F; }
+  #ft .stats {
+    float: right; }
 
 .clear {
   clear: both; }
