@@ -15,7 +15,7 @@ class Book < ActiveRecord::Base
   validates_uniqueness_of :isbn
 
   before_validation :cleanup_isbn
-  after_create :initialize_from_amazon
+  after_save :initialize_from_amazon
 
   def current_loan
     @current_loan ||= loans.active.first
@@ -41,8 +41,9 @@ class Book < ActiveRecord::Base
 
   def initialize_from_amazon
     return unless self.name.blank?
-    xml = open("http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&SubscriptionId=#{AMAZON_CONF['subscription_id']}&Operation=ItemLookup&ResponseGroup=Medium&ItemId=#{self.isbn}").read
-    doc = Hpricot.parse(xml)
+    doc = get_amazon_response
+    
+    return if doc.nil?
 
     (doc/:item).collect do |item|
       self.amazon_detail_page_url = (item/:detailpageurl).innerHTML
@@ -61,11 +62,20 @@ class Book < ActiveRecord::Base
       (item/:author).each do |author_element|
         name = author_element.innerHTML
         author = Author.find_or_create_by_name(name)
-        self.authors << author
+        self.authors << author unless self.author_ids.include?(author.id)
       end
 
       self.save
     end
+  end
+  
+  def get_amazon_response
+    %w(webservices.amazon.com webservices.amazon.co.uk webservices.amazon.de).each do |domain|
+      xml = open("http://#{domain}/onca/xml?Service=AWSECommerceService&SubscriptionId=#{AMAZON_CONF['subscription_id']}&Operation=ItemLookup&ResponseGroup=Medium&ItemId=#{self.isbn}").read
+      doc = Hpricot.parse(xml)
+      return doc if (doc/:item).size > 0
+    end
+    nil
   end
   
   def xml_to_image(xml)

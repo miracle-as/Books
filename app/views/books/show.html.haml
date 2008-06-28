@@ -14,17 +14,19 @@
       = @book.current_loan.user.login + ','
       = time_ago_in_words(@book.current_loan.check_out) + ' ago'
   
-  .publisher
-    %label= 'Publisher'[] + ':'
-    = link_to @book.publisher.name, @book.publisher
+  - unless @book.publisher_id.blank? || @book.publisher.blank?
+    .publisher
+      %label= 'Publisher'[] + ':'
+      = link_to @book.publisher.name, @book.publisher
   
-  .isbn-10
-    %label= 'ISBN-10'[] + ':'
-    = @book.isbn_10
+  - unless @book.isbn.blank?
+    .isbn-10
+      %label= 'ISBN-10'[] + ':'
+      = @book.isbn_10
 
-  .isbn-13
-    %label= 'ISBN-13'[] + ':'
-    = @book.isbn_13
+    .isbn-13
+      %label= 'ISBN-13'[] + ':'
+      = @book.isbn_13
   
   - unless @book.published.blank?
     .published

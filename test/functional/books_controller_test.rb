@@ -13,6 +13,15 @@ class BooksControllerTest < ActionController::TestCase
     should_not_set_the_flash
   end
   
+  context "showing a book with no publisher" do
+    setup do
+      books(:mmm).update_attribute :publisher_id, nil
+      get :show, :id => books(:mmm)
+    end
+
+    should_respond_with :success
+  end
+  
   context "on GET to :index when not logged in" do
     setup do
       get :index
