@@ -26,7 +26,9 @@ a {
     background-color: #98CAD5; }
     #hd #menu ul {
       position: relative;
-      left: -10px; }
+      left: -10px;
+      float: left;
+      display: block; }
       #hd #menu ul li {
         display: inline; }
         #hd #menu ul li a {
@@ -42,6 +44,15 @@ a {
           font-size: 12px; }
           #hd #menu ul li a:hover, #hd #menu ul li a.current {
             color: #EEEEEE; }
+        #hd #menu ul li .notes {
+          float: left;
+          color: #EEEEEE;
+          font-size: 12px;
+          padding: 5px; }
+    #hd #menu ul.user-menu {
+      left: auto;
+      right: -10px;
+      float: right; }
 
 #bd {
   clear: both;
@@ -82,7 +93,10 @@ a {
       font-size: 12px;
       color: #5F5F5F; }
   #bd #books .book {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    margin-right: 20px; }
+    #bd #books .book .loan {
+      float: right; }
     #bd #books .book .image {
       width: 57px;
       float: left;
@@ -95,6 +109,8 @@ a {
     #bd #books .book label {
       font-weight: bold; }
   #bd #book .authors {
+    margin-bottom: 1em; }
+  #bd #book .borrowed_by {
     margin-bottom: 1em; }
   #bd #book .added {
     margin-top: 1em; }

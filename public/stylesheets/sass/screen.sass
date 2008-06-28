@@ -35,6 +35,8 @@ a
     ul
       :position relative
       :left -10px
+      :float left
+      :display block
       
       li
         :display inline
@@ -53,6 +55,17 @@ a
         
           &:hover, &.current
             :color #EEEEEE
+            
+        .notes
+          :float left
+          :color #EEEEEE
+          :font-size 12px
+          :padding 5px
+            
+    ul.user-menu
+      :left auto
+      :right -10px
+      :float right
 
 #bd
   :clear both
@@ -108,6 +121,10 @@ a
   #books
     .book
       :margin-bottom 20px
+      :margin-right 20px
+      
+      .loan
+        :float right
       
       .image
         :width 57px
@@ -123,21 +140,24 @@ a
         
       label
         :font-weight bold
-      
+
   #book
     .authors
       :margin-bottom 1em
-      
+
+    .borrowed_by
+      :margin-bottom 1em
+
     .added
       :margin-top 1em
-      
+
     label
       :font-weight bold
-      
+
   #sidebar
     .cover
       :text-align right
-  
+
 #ft
   :padding 20px
   :color #5F5F5F

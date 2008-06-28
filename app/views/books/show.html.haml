@@ -4,6 +4,11 @@
   .authors
     by
     %span= @book.author_names
+    
+  - if @book.current_loan
+    .borrowed_by
+      %label Borrowed by:
+      = @book.current_loan.user.login
   
   .isbn-10
     %label ISBN-10:

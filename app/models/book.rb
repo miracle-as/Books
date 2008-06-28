@@ -5,6 +5,8 @@ class Book < ActiveRecord::Base
   has_many :authors, :through => :authorships
   has_many :releases
   has_many :publishers, :through => :releases
+  has_many :loans
+  has_many :users, :through => :loans
 
   belongs_to :small_image, :class_name => "Image", :foreign_key => "small_image_id"
   belongs_to :medium_image, :class_name => "Image", :foreign_key => "medium_image_id"
@@ -18,6 +20,10 @@ class Book < ActiveRecord::Base
   
   def author_names
     self.authors.collect(&:name).sort.to_sentence(:skip_last_comma => true)
+  end
+  
+  def current_loan
+    loans.select { |l| l.check_in.blank? }.first
   end
   
   def isbn_10
