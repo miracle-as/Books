@@ -92,6 +92,25 @@ a
 
     .cover
       :text-align right
+      
+    #loans
+      #books
+        :font-size 12px
+      
+        h3
+          :font-weight normal
+      
+        .loan
+          :float none
+          
+        .authors
+          :font-style italic
+          
+        .image
+          :text-align left
+          
+        .published, .pages
+          :display none
     
   .with-sidebar #main
     :width = !content_width - !sidebar_width - !column_spacing
@@ -136,7 +155,7 @@ a
         :width 65px
         :float left
         :margin-right 10px
-        :text-align center
+        :text-align right
         
         img
           :vertical-align top

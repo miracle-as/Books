@@ -1,0 +1,7 @@
+- title 'Dashboard'
+#books= render :partial => @books
+
+- content_for :sidebar do
+  %h2 Your loans
+  #loans
+    #books= render :partial => @loans.collect(&:book)

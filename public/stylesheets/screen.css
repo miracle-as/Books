@@ -73,6 +73,18 @@ a {
       margin-left: 40px; }
     #bd #sidebar .cover {
       text-align: right; }
+    #bd #sidebar #loans #books {
+      font-size: 12px; }
+      #bd #sidebar #loans #books h3 {
+        font-weight: normal; }
+      #bd #sidebar #loans #books .loan {
+        float: none; }
+      #bd #sidebar #loans #books .authors {
+        font-style: italic; }
+      #bd #sidebar #loans #books .image {
+        text-align: left; }
+      #bd #sidebar #loans #books .published, #bd #sidebar #loans #books .pages {
+        display: none; }
   #bd .with-sidebar #main {
     width: 690px;
     float: left; }
@@ -104,7 +116,7 @@ a {
       width: 65px;
       float: left;
       margin-right: 10px;
-      text-align: center; }
+      text-align: right; }
       #bd #books .book .image img {
         vertical-align: top; }
     #bd #books .book .authors {

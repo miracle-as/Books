@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :session
 
-  map.root :controller => 'books', :action => 'index'
+  map.root :controller => 'dashboard', :action => 'index'
   map.resources :books do |books|
     books.resources :loans
   end
