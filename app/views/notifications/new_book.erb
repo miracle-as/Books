@@ -1,0 +1,15 @@
+Hej,
+
+Så er der kommet en ny bog i Lenios bibliotek:
+
+<%= @book.name %>
+af <%= @book.authors.collect(&:name).sort.to_sentence(:skip_last_comma => true, :connector => 'and'[:sentence_connector]) %>
+
+Detaljer på:
+http://books.lenio.dk<%= book_path(@book) %>
+
+Se en liste af alle Lenios bøger på:
+http://books.lenio.dk
+
+Mvh.
+Lenios bibliotek

@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.root :controller => 'dashboard', :action => 'index'
-  map.resources :books do |books|
+  map.resources :books, { :member => { :notify => :post } } do |books|
     books.resources :loans
   end
   map.resources :authors

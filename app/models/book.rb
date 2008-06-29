@@ -28,6 +28,12 @@ class Book < ActiveRecord::Base
   def isbn_13
     ISBN_Tools.hyphenate_isbn13(ISBN_Tools.isbn10_to_isbn13(self.isbn))
   end
+  
+  def notify!
+    Notifications.deliver_new_book(self)
+    self.notification_sent = true
+    self.save
+  end
 
   protected
   def must_be_valid_isbn

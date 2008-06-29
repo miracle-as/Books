@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     if @book.save && !@book.name.blank?
-      redirect_to books_url
+      redirect_to @book
     else
       @book = Book.new if params[:book] == { 'isbn' => '' }
       render :action => 'new'
@@ -40,5 +40,11 @@ class BooksController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+  
+  def notify
+    @book = Book.find(params[:id])
+    @book.notify!
+    redirect_to @book
   end
 end
