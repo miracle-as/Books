@@ -9,16 +9,19 @@ authors: Forfattere
 publishers: Forlag
 loans: Udlån
 
-logged_in_as_user: Logget ind som {user}
+logged_in_as: Logget ind som
 log_out: Log af
 not_logged_in: Ikke logget ind
 log_in: Log ind
 sign_up: Opret konto
 create_an_account: Opret en konto
 
+edit_user: Rediger bruger
 login: Brugernavn
 password: Kodeord
 remember_me: Husk mig
+save_changes: Gem ændringer
+user_saved: Ændringerne er gemt.
 
 sign_up_as_a_new_user: Opret en konto
 email: E-mail
@@ -76,5 +79,3 @@ author_results: Forfattere ({results} resultater)
 no_cover: Intet cover-billede tilgængeligt
 
 all_publishers: Alle forlag
-
-changes_to_user_saved: Ændringerne er gemt.
