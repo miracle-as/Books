@@ -61,7 +61,7 @@
             %td= loan.check_in.blank? ? 'Not checked in'[] : loan.check_in.to_date
 
   - content_for :sidebar do
-    - if_authorized?(:create, Loan) do
+    - if logged_in?
       .loan
         - if @book.current_loan.blank? || @book.current_loan.user_id != current_user.id
           = link_to 'Borrow'[], book_loans_path(@book), :method => :post

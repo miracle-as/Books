@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :must_be_self_or_admin, :only => [:edit, :update]
+  
   # render new.rhtml
   def new
     @user = User.new
@@ -20,5 +22,25 @@ class UsersController < ApplicationController
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
     end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      flash[:notice] = 'Changes to user saved.'[]
+      redirect_to edit_user_url(@user)
+    else
+      render :action => 'edit'
+    end
+  end
+  
+  protected
+  def must_be_self_or_admin
+    return true if current_user.admin? || current_user.id.to_s == params[:id]
+    access_denied
   end
 end

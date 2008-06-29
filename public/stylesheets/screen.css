@@ -46,6 +46,14 @@ a {
             color: #F4F2E9; }
         #hd #menu ul li .notes {
           color: #F4F2E9; }
+          #hd #menu ul li .notes a {
+            display: inline;
+            color: #F4F2E9;
+            text-transform: none;
+            font-weight: normal;
+            padding: 0;
+            margin: 0;
+            float: none; }
     #hd #menu ul.user-menu {
       left: auto;
       right: -10px;
@@ -63,6 +71,13 @@ a {
   #bd h2.page_title {
     text-transform: uppercase;
     margin-bottom: 20px; }
+  #bd #messages div {
+    padding: 5px;
+    margin-bottom: 1em;
+    color: #5F5F5F; }
+  #bd #messages .notice {
+    background-color: #F5E3B6;
+    border: 1px solid #DBD8D1; }
   #bd #sidebar {
     width: 260px;
     float: right; }

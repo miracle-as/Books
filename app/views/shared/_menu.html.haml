@@ -11,7 +11,8 @@
       - if logged_in?
         %li
           .notes
-            = 'Logged in as {user}'[:logged_in_as_user, current_user.login]
+            = 'Logged in as'[:logged_in_as]
+            = link_to current_user.login, edit_user_path(current_user)
         %li= link_to 'Log out'[], logout_path, { :title => 'Log out'[] }
       - else
         %li

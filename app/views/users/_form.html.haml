@@ -1,0 +1,26 @@
+- if user.new_record?
+  - user.password = user.password_confirmation = nil
+
+= error_messages_for :user
+- form_for user do |f|
+  .field
+    = f.label :login, 'Login'[]
+    = f.text_field :login
+    
+  .field
+    = f.label :email, 'Email'[]
+    = f.text_field :email
+    
+  .field
+    = f.label :password, 'Password'[]
+    = f.password_field :password
+  
+  .field
+    = f.label :password_confirmation, 'Confirm password'[]
+    = f.password_field :password_confirmation
+    
+  - if user.new_record?
+    = submit_tag 'Sign up'[]
+  - else
+    = submit_tag 'Save changes'[]
+  

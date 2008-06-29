@@ -20,8 +20,15 @@
       
     #bd
       .content{ :class => sidebar.blank? ? (right_column.blank? ? nil : 'with-right-column') : 'with-sidebar' }
+        - if flash.keys.size > 0
+          #messages
+            - flash.keys.each do |key|
+              %div{ :class => key }
+                = flash[key]
+
         - unless @page_title.blank?
           %h2.page_title&= @page_title
+        
         #main= yield
         - unless sidebar.blank?
           #sidebar

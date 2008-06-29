@@ -37,6 +37,7 @@ adding: Tilføjer
 isbn: ISBN
 edit: Rediger
 send_new_book_notification: Udsend "ny bog" e-mail
+new_book_notification_sent: E-mail sendt.
 for_1_day_ago: for 1 dag siden
 for_x_days_ago: for {days} dage siden
 
@@ -57,6 +58,8 @@ not_checked_in: Ikke afleveret
 
 borrow: Lån
 return: Aflever
+loan_registered: Dit lån er registreret.
+book_returned: Bogen er afleveret.
 
 title: Titel
 add: Tilføj
@@ -73,3 +76,5 @@ author_results: Forfattere ({results} resultater)
 no_cover: Intet cover-billede tilgængeligt
 
 all_publishers: Alle forlag
+
+changes_to_user_saved: Ændringerne er gemt.

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :login_required, :only => [:new, :create, :edit, :update]
+  before_filter :login_required, :only => [:new, :create, :edit, :update, :notify]
   
   def per_page
     10
@@ -45,6 +45,13 @@ class BooksController < ApplicationController
   def notify
     @book = Book.find(params[:id])
     @book.notify!
+    flash[:notice] = 'New book-notification sent.'[:new_book_notification_sent]
     redirect_to @book
+  end
+  
+  protected
+  def authorized?(action=nil, resource=nil, *args)
+    return true if logged_in? && current_user.admin?
+    false
   end
 end
