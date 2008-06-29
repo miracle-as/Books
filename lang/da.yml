@@ -36,6 +36,9 @@ edit_book: Rediger bog
 adding: Tilføjer
 isbn: ISBN
 edit: Rediger
+send_new_book_notification: Udsend "ny bog" e-mail
+for_1_day_ago: for 1 dag siden
+for_x_days_ago: for {days} dage siden
 
 by: af
 available: Hjemme

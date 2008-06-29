@@ -3,7 +3,7 @@
   - if_authorized?(:edit, Book) do
     .edit_link= link_to 'Edit'[], edit_book_path(@book)
     - unless @book.notification_sent?
-      .notify_link= link_to 'Send "new book" notification'[], notify_book_path(@book), :method => :post
+      .notify_link= link_to 'Send "new book" notification'[:send_new_book_notification], notify_book_path(@book), :method => :post
 
   %h3= @book.name
   .authors
@@ -14,7 +14,7 @@
     .borrowed_by
       %label= 'Borrowed by'[] + ':'
       = @book.current_loan.user.login + ','
-      = time_ago_in_words(@book.current_loan.check_out) + ' ago'
+      = days_ago(@book.current_loan.check_out)
   
   - unless @book.publisher_id.blank? || @book.publisher.blank?
     .publisher
