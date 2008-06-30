@@ -43,6 +43,9 @@
   .added
     %label= 'Added to library'[] + ':'
     = @book.created_at.to_date
+    
+  .amazon
+    = link_to 'Amazon'[], @book.amazon_detail_page_url, :target => '_blank'
   
   - if @loans.size > 0
     .loans
@@ -69,4 +72,4 @@
           = link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
 
     - if @book.large_image_id
-      .cover= link_to @book.medium_image.image_tag, @book.amazon_detail_page_url, :target => '_blank'
+      .cover= @book.medium_image.image_tag

@@ -90,5 +90,7 @@ class Book < ActiveRecord::Base
       image.width = (xml/:width).first.innerHTML
       image.height = (xml/:height).first.innerHTML
     end
+  rescue
+    nil
   end
 end
