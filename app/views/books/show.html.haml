@@ -43,9 +43,10 @@
   .added
     %label= 'Added to library'[] + ':'
     = @book.created_at.to_date
-    
-  .amazon
-    = link_to 'Amazon'[], @book.amazon_detail_page_url, :target => '_blank'
+
+  - unless @book.amazon_detail_page_url.blank?
+    .amazon
+      = link_to 'Amazon'[], @book.amazon_detail_page_url, :target => '_blank'
   
   - if @loans.size > 0
     .loans
