@@ -41,6 +41,7 @@ isbn: ISBN
 edit: Rediger
 send_new_book_notification: Udsend "ny bog" e-mail
 new_book_notification_sent: E-mail sendt.
+today: i dag
 for_1_day_ago: for 1 dag siden
 for_x_days_ago: for {days} dage siden
 

@@ -5,7 +5,9 @@ module BooksHelper
   
   def days_ago(date)
     days = (Date.today - date.to_date)
-    if days == 1
+    if days == 0
+      'today'[:today]
+    elsif days == 1
       '1 day ago'[:for_1_day_ago]
     else
       '{days} days ago'[:for_x_days_ago, days]
