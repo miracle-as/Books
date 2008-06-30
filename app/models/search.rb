@@ -9,10 +9,10 @@ class Search < ActiveRecord::Base
   
   private
   def find_books
-    Book.find(:all, :conditions => ["books.name LIKE ?", "%#{keywords}%"])
+    Book.find(:all, :order => 'name', :conditions => ["books.name LIKE ?", "%#{keywords}%"])
   end
   
   def find_authors
-    Author.find(:all, :conditions => ["authors.name LIKE ?", "%#{keywords}%"])
+    Author.find(:all, :order => 'name', :conditions => ["authors.name LIKE ?", "%#{keywords}%"])
   end
 end
