@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :users
   map.resource :session
+  
+  map.connect '/feed.:format', :controller => 'dashboard', :action => 'index'
 
   map.root :controller => 'dashboard', :action => 'index'
   map.resources :books, { :member => { :notify => :post } } do |books|
