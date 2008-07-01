@@ -11,7 +11,7 @@ class Loan < ActiveRecord::Base
   end
   
   def returned?
-    return !check_in.nil?
+    !check_in.nil?
   end
   
   protected

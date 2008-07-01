@@ -6,7 +6,11 @@ class LoansControllerTest < ActionController::TestCase
       get :index
     end
     
-    should_respond_with :redirect
+    should_assign_to :loans
+    should_not_assign_to :my_loans
+    should_respond_with :success
+    should_render_template :index
+    should_not_set_the_flash
   end
   
   context "on GET to :index when logged in" do
@@ -16,6 +20,7 @@ class LoansControllerTest < ActionController::TestCase
     end
 
     should_assign_to :loans
+    should_assign_to :my_loans
     should_respond_with :success
     should_render_template :index
     should_not_set_the_flash
