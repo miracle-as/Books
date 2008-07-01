@@ -25,6 +25,7 @@ class LoanTest < ActiveSupport::TestCase
       
       should "be the only active loan on a book" do
         assert_equal @book.loans.active.size, 1
+        assert_equal @book.loans.active.first, @new_loan
       end
     end
   end
