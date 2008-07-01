@@ -9,3 +9,6 @@
   %h2
     = 'Authors ({results} results)'[:author_results, @authors.size]
   #authors= render :partial => @authors
+  
+- if @books.size + @authors.size == 0
+  #no_results= 'The search yielded no results.'[:no_results]
