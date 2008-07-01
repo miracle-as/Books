@@ -10,3 +10,6 @@
         #books= render :partial => @loans.collect(&:book)
       - else
         = 'You have no books on loan.'[:no_books_on_loan]
+        
+- content_for :head do
+  = auto_discovery_link_tag(:atom, feed_url)

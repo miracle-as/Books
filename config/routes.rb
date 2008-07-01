@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :session
   
-  map.connect '/feed.:format', :controller => 'dashboard', :action => 'index'
+  map.feed '/feed.atom', :controller => 'dashboard', :action => 'index', :format => 'atom'
 
   map.root :controller => 'dashboard', :action => 'index'
   map.resources :books, { :member => { :notify => :post } } do |books|
