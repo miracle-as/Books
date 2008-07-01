@@ -1,0 +1,17 @@
+setup :fixtures => :all
+
+open '/'
+click_and_wait "css=li.signup a"
+
+type 'user_login', 'testuser'
+type 'user_email', 'testuser@example.com'
+type 'user_password', 'testuser'
+type 'user_password_confirmation', 'testuser'
+click_and_wait 'commit'
+
+assert_element_present "css=.logged_in_as a:contains('testuser')"
+assert_element_present "css=#messages div.notice"
+
+refresh_and_wait
+assert_element_present "css=.logged_in_as a:contains('testuser')"
+assert_element_not_present "css=#messages div.notice"

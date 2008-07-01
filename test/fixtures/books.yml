@@ -6,3 +6,11 @@ mmm:
   published: 1995-08-12
   amazon_detail_page_url: http://www.amazon.com/Mythical-Man-Month-Software-Engineering-Anniversary/dp/0201835959%3FSubscriptionId%3D1VMAHZW8XQ31ER6CAWG2%26tag%3Dws%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0201835959
   publisher: aw
+  
+fhww:
+  name: 'The 4-Hour Workweek'
+  isbn: 0307353133
+  pages: 320
+  published: 2007-04-24
+  amazon_detail_page_url: http://www.amazon.com/4-Hour-Workweek-Escape-Live-Anywhere/dp/0307353133%3FSubscriptionId%3D052GMKZBEM7FCJAXKN82%26tag%3Dws%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0307353133
+  publisher: aw

@@ -68,9 +68,9 @@
     - if logged_in?
       .loan
         - if @book.current_loan.blank? || @book.current_loan.user_id != current_user.id
-          = link_to 'Borrow'[], book_loans_path(@book), :method => :post
+          %span.borrow= link_to 'Borrow'[], book_loans_path(@book), :method => :post
         - else
-          = link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
+          %span.return= link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
 
     - if @book.large_image_id
       .cover= @book.medium_image.image_tag

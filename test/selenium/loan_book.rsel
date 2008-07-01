@@ -1,0 +1,18 @@
+setup :fixtures => :all
+
+open '/'
+click_and_wait 'css=li.login a'
+
+type 'login', 'aaron'
+type 'password', 'monkey'
+click_and_wait 'commit'
+
+click_and_wait "css=a:contains('The 4-Hour Workweek')"
+
+click_and_wait "css=.loan span.borrow a"
+assert_element_present "css=.borrowed_by:contains('aaron')"
+assert_element_present "css=#messages div.notice"
+
+click_and_wait "css=.loan span.return a"
+assert_element_not_present "css=.borrowed_by:contains('aaron')"
+assert_element_present "css=#messages div.notice"

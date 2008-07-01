@@ -12,14 +12,14 @@
         %li
           .notes
             = 'Logged in as'[:logged_in_as]
-            = link_to current_user.login, edit_user_path(current_user)
+            %span.logged_in_as= link_to current_user.login, edit_user_path(current_user)
         %li= link_to 'Log out'[], logout_path, { :title => 'Log out'[] }
       - else
         %li
           .notes
             = 'Not logged in'[]
-        %li= link_to 'Log in'[], login_path, { :title => 'Log in'[] }
-        %li= link_to 'Sign up'[], signup_path, { :title => 'Create an account'[] }
+        %li.login= link_to 'Log in'[], login_path, { :title => 'Log in'[] }
+        %li.signup= link_to 'Sign up'[], signup_path, { :title => 'Create an account'[] }
 
     .clear
       %hr
