@@ -1,6 +1,6 @@
 - title 'Your loans'[]
 
-- if @my_loans.size > 0
+- if !@my_loans.blank? && @my_loans.size > 0
   %h3= 'You'[]
   .books= render :partial => @my_loans.collect(&:book)
 
