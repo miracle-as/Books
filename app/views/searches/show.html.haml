@@ -3,7 +3,7 @@
 - if @books.size > 0
   %h2
     = 'Books ({results} results)'[:book_results, @books.size]
-  #books= render :partial => @books
+  .books= render :partial => @books
   
 - if @authors.size > 0
   %h2

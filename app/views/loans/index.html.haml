@@ -1,5 +1,10 @@
 - title 'Your loans'[]
-- if @loans.size > 0
-  #books= render :partial => @loans.collect(&:book)
-- else
-  = 'You have no books on loan.'[:no_books_on_loan]
+
+- if @my_loans.size > 0
+  %h3= 'You'[]
+  .books= render :partial => @my_loans.collect(&:book)
+
+- if @loans.keys.size > 0
+  - @loans.keys.each do |user|
+    %h3= user.login
+    .books= render :partial => @loans[user].collect(&:book)

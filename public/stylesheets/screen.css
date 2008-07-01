@@ -144,21 +144,21 @@ a {
     #bd .field .note {
       font-size: 12px;
       color: #5F5F5F; }
-  #bd #books .book {
+  #bd .books .book {
     margin-bottom: 20px; }
-    #bd #books .book .image {
+    #bd .books .book .image {
       width: 65px;
       float: left;
       margin-right: 10px;
       text-align: right; }
-      #bd #books .book .image img {
+      #bd .books .book .image img {
         vertical-align: top; }
-    #bd #books .book .meta {
+    #bd .books .book .meta {
       margin-left: 75px; }
-      #bd #books .book .meta .authors {
+      #bd .books .book .meta .authors {
         display: block;
         margin-bottom: 1em; }
-    #bd #books .book label {
+    #bd .books .book label {
       font-weight: bold; }
   #bd #book .edit_link, #bd #book .notify_link, #bd #book .authors, #bd #book .borrowed_by {
     margin-bottom: 1em; }
