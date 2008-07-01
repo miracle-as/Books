@@ -15,4 +15,5 @@ config/deploy.rb
 .project
 .loadpath
 nbproject
+vendor/plugins/selenium-on-rails/log/*.yml
 vendor/plugins/goldspike
