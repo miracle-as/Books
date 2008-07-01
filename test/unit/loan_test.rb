@@ -12,6 +12,11 @@ class LoanTest < ActiveSupport::TestCase
     should "be the current_loan on a book" do
       assert_equal @book.current_loan, @loan
     end
+      
+    should "be the only active loan on a book" do
+      assert_equal @book.loans.active.size, 1
+      assert_equal @book.loans.active.first, @loan
+    end
     
     context "when a loan already exists" do
       setup do
