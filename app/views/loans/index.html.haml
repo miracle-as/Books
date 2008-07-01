@@ -1,10 +1,11 @@
-- title 'Your loans'[]
+- title 'Loans'[]
 
-- if !@my_loans.blank? && @my_loans.size > 0
-  %h3= 'You'[]
-  .books= render :partial => @my_loans.collect(&:book)
+#loans
+  - if !@my_loans.blank? && @my_loans.size > 0
+    %h2= 'Your loans'[]
+    .books= render :partial => @my_loans.collect(&:book)
 
-- if @loans.keys.size > 0
-  - @loans.keys.each do |user|
-    %h3= user.login
-    .books= render :partial => @loans[user].collect(&:book)
+  - if @loans.keys.size > 0
+    - @loans.keys.each do |user|
+      %h2= user.login
+      .books= render :partial => @loans[user].collect(&:book)
