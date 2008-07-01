@@ -14,7 +14,7 @@ class LoansController < ApplicationController
   
   def destroy
     loan = Loan.find(params[:id])
-    loan.update_attribute :check_in, Time.now
+    loan.return!
     flash[:notice] = 'You have returned the book.'[:book_returned]
     redirect_to loan.book
   end
