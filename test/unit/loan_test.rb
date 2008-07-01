@@ -27,6 +27,11 @@ class LoanTest < ActiveSupport::TestCase
         assert_equal @book.loans.active.size, 1
         assert_equal @book.loans.active.first, @new_loan
       end
+      
+      should "return the old loan" do
+        @loan.reload
+        assert @loan.returned?
+      end
     end
   end
 end

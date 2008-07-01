@@ -10,6 +10,10 @@ class Loan < ActiveRecord::Base
     self.update_attribute :check_in, Time.now
   end
   
+  def returned?
+    return !check_in.nil?
+  end
+  
   protected
   def return_previous_loan
     previous_loan = self.book.loans.active.first
