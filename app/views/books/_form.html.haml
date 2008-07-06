@@ -15,5 +15,10 @@
   .field
     = f.label :published, 'Published'[]
     = f.date_select :published
+  
+  .field
+    = f.label :tag_list, 'Tags'[]
+    = f.text_field :tag_list
+    .notes= 'Comma-separated list of tags.'[]
 
   = submit_tag book.new_record? ? 'Add'[] : 'Update'[]

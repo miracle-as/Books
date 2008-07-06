@@ -1,7 +1,10 @@
 // endless_page.js
 var currentPage = 1;
+var dontCheckScroll = false;
 
 function checkScroll() {
+  if (dontCheckScroll) return;
+  
   if (nearBottomOfPage()) {
     currentPage++;
     new Ajax.Request('/books.js?page=' + currentPage, {asynchronous:true, evalScripts:true, method:'get'});

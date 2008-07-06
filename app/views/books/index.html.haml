@@ -1,8 +1,16 @@
-- title 'All books'[]
-- javascript 'endless_book_page'
-.books= render :partial => @books
+- if params[:tag].blank?
+  - title 'All books'[]
+- else
+  - title 'Books tagged with {tag}'[:books_with_tag, params[:tag]]
 
-%p#loading= 'Loading more books...'[:loading_more_books]
+- javascript 'endless_book_page'
+#books.books= render :partial => @books
+
+- if params[:tag].blank?
+  %p#loading= 'Loading more books...'[:loading_more_books]
+- else
+  %script{ :type => 'text/javascript' }
+    = "var dontCheckScroll = true;"
 
 - if_authorized?(:create, Book) do
   - content_for :sidebar do

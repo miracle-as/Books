@@ -1,6 +1,8 @@
 require 'open-uri'
 
 class Book < ActiveRecord::Base
+  acts_as_taggable_on :tags
+  
   has_many :authorships
   has_many :authors, :through => :authorships
   belongs_to :publisher

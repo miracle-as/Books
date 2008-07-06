@@ -6,7 +6,11 @@ class BooksController < ApplicationController
   end
   
   def index
-    @books = Book.paginate(:order => 'name', :include => [ :authors, :loans, :small_image ], :page => params[:page], :per_page => per_page)
+    if params[:tag]
+      @books = Book.paginate_tagged_with(params[:tag], :order => 'name', :page => params[:page], :per_page => per_page)
+    else
+      @books = Book.paginate(:order => 'name', :include => [ :authors, :loans, :small_image ], :page => params[:page], :per_page => per_page)
+    end
     @book = Book.new
   end
 

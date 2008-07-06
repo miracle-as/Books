@@ -32,6 +32,7 @@ your_loans: Dine udlån
 no_books_on_loan: Du har ikke lånt nogen bøger.
 
 all_books: Alle bøger
+books_with_tag: Bøger om {tag}
 loading_more_books: Henter flere bøger...
 leave_empty_on_unknown_isbn: Efterlad tom hvis ISBN er ukendt.
 add_book: Tilføj bog
