@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :must_be_self_or_admin, :only => [:edit, :update]
+  before_filter :must_be_self_or_admin, :except => [:new, :create]
+
+  def index
+    @users = User.all(:order => 'login')
+  end
   
   # render new.rhtml
   def new

@@ -6,7 +6,9 @@
       %li= link_to 'Authors'[], authors_path, :class => (controller.controller_name == 'authors' ? 'current' : nil)
       %li= link_to 'Publishers'[], publishers_path, :class => (controller.controller_name == 'publishers' ? 'current' : nil)
       %li= link_to 'Loans'[], loans_path, :class => (controller.controller_name == 'loans' ? 'current' : nil)
-      
+      - if logged_in? && current_user.admin?
+        %li= link_to 'Users'[], users_path, :class => (controller.controller_name == 'users' ? 'current' : nil)
+
     %ul.user-menu
       - if logged_in?
         %li

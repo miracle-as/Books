@@ -19,7 +19,7 @@
     - if book.current_loan.blank?
       = 'Available'[] + ','
     - else
-      = 'Out'[] + " (#{book.current_loan.user.login}),"
+      = 'Out'[] + " (#{book.current_loan.user.name_or_login}),"
       
     - unless book.published.blank?
       %span.published

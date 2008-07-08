@@ -15,7 +15,7 @@
     - if @book.current_loan
       .borrowed_by
         %label= 'Borrowed by'[] + ':'
-        = @book.current_loan.user.login + ','
+        = @book.current_loan.user.name_or_login + ','
         = days_ago(@book.current_loan.check_out)
   
     - unless @book.publisher_id.blank? || @book.publisher.blank?
@@ -62,7 +62,7 @@
         %tbody
         - @loans.each do |loan|
           %tr
-            %td= loan.user.login
+            %td= loan.user.name_or_login
             %td= loan.check_out.to_date
             %td= loan.check_in.blank? ? 'Not checked in'[] : loan.check_in.to_date
 

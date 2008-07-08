@@ -7,5 +7,5 @@
 
   - if @loans.keys.size > 0
     - @loans.keys.each do |user|
-      %h2= user.login
+      %h2= user.name_or_login
       .books= render :partial => @loans[user].collect(&:book)
