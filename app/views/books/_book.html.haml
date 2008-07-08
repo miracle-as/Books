@@ -12,7 +12,10 @@
       %span.authors
         = 'by'[]
         %span= author_names(book.authors)
-    
+        
+    - if book.tags.size > 0
+      %span.tags= tag_links(book.tags)
+
     - if book.current_loan.blank?
       = 'Available'[] + ','
     - else

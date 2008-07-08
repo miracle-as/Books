@@ -109,6 +109,17 @@ a
 
     .cover
       :text-align right
+      :margin-bottom 1em
+      
+      img
+        :vertical-align bottom
+      
+    .tags
+      :text-align right
+      
+      label
+        :font-weight bold
+        :display block
 
     .loan
       :margin-bottom 1em
@@ -213,15 +224,18 @@ a
         .authors
           :display block
           :margin-bottom 1em
+
+        .tags
+          :display block
         
       label
         :font-weight bold
 
   #book
-    .edit_link, .notify_link, .authors, .borrowed_by
+    .edit_link, .notify_link, .borrowed_by
       :margin-bottom 1em
-
-    .added
+    
+    .publish_data, .added
       :margin-top 1em
 
     label

@@ -6,39 +6,41 @@
       .notify_link= link_to 'Send "new book" notification'[:send_new_book_notification], notify_book_path(@book), :method => :post
 
   %h3= @book.name
-  .authors
-    = 'by'[]
-    %span= author_names(@book.authors)
-    
-  - if @book.current_loan
-    .borrowed_by
-      %label= 'Borrowed by'[] + ':'
-      = @book.current_loan.user.login + ','
-      = days_ago(@book.current_loan.check_out)
+  - if @book.authors.size > 0
+    .authors
+      = 'by'[]
+      %span= author_names(@book.authors)
+      
+  .publish_data
+    - if @book.current_loan
+      .borrowed_by
+        %label= 'Borrowed by'[] + ':'
+        = @book.current_loan.user.login + ','
+        = days_ago(@book.current_loan.check_out)
   
-  - unless @book.publisher_id.blank? || @book.publisher.blank?
-    .publisher
-      %label= 'Publisher'[] + ':'
-      = link_to @book.publisher.name, @book.publisher
+    - unless @book.publisher_id.blank? || @book.publisher.blank?
+      .publisher
+        %label= 'Publisher'[] + ':'
+        = link_to @book.publisher.name, @book.publisher
   
-  - unless @book.isbn.blank?
-    .isbn-10
-      %label= 'ISBN-10'[] + ':'
-      = @book.isbn_10
+    - unless @book.isbn.blank?
+      .isbn-10
+        %label= 'ISBN-10'[] + ':'
+        = @book.isbn_10
 
-    .isbn-13
-      %label= 'ISBN-13'[] + ':'
-      = @book.isbn_13
+      .isbn-13
+        %label= 'ISBN-13'[] + ':'
+        = @book.isbn_13
   
-  - unless @book.published.blank?
-    .published
-      %label= 'Published'[] + ':'
-      = @book.published
+    - unless @book.published.blank?
+      .published
+        %label= 'Published'[] + ':'
+        = @book.published
   
-  - unless @book.pages.blank?
-    .pages
-      %label= 'Pages'[] + ':'
-      = @book.pages
+    - unless @book.pages.blank?
+      .pages
+        %label= 'Pages'[] + ':'
+        = @book.pages
       
   .added
     %label= 'Added to library'[] + ':'
@@ -74,3 +76,8 @@
 
     - if @book.large_image_id
       .cover= @book.medium_image.image_tag
+      
+    - if @tags.size > 0
+      .tags
+        %label= 'Tags'[] + ':'
+        = tag_links(@tags)

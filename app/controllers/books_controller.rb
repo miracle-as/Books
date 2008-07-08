@@ -17,6 +17,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @loans = @book.loans.all(:order => 'check_out DESC')
+    @tags = @book.tags
   end
 
   def new
