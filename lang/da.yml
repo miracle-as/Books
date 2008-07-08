@@ -60,6 +60,7 @@ user: Bruger
 check_out: Udlånt
 check_in: Afleveret
 not_checked_in: Ikke afleveret
+tags: Tags
 
 borrow: Lån
 return: Aflever
