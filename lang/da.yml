@@ -86,3 +86,4 @@ no_results: Søgningen gav ingen resultater.
 
 users: Brugere
 books_on_loan: Lånte bøger
+user_has_no_books_on_loan: Brugeren {user} har ikke lånt nogen bøger.

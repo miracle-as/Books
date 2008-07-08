@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :must_be_self_or_admin, :except => [:new, :create]
+  before_filter :must_be_self_or_admin, :except => [:index, :show, :new, :create]
 
   def index
     @users = User.all(:order => 'login')
+  end
+  
+  def show
+    @user = User.find(params[:id])
+    @books = @user.loans.collect(&:book)
   end
   
   # render new.rhtml
