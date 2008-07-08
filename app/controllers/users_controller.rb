@@ -7,7 +7,10 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @books = @user.loans.collect(&:book)
+    @active_loans = @user.loans.active.collect(&:book).sort_by(&:name)
+    @all_loans = @user.loans.collect(&:book).sort_by(&:name)
+    
+    @inactive_loans = @all_loans - @active_loans
   end
   
   # render new.rhtml

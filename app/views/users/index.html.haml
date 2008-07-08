@@ -12,7 +12,7 @@
   - @users.each do |user|
     %tr
       %td= user.login
-      %td= link_to user.name, user
+      %td= link_to user.name_or_login, user
       - if logged_in? && current_user.admin?
         %td= user.loans.size
         %td= link_to 'Edit'[], edit_user_path(user)
