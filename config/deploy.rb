@@ -16,15 +16,25 @@ set :deploy_to, "/var/www/apps/#{application}"
 # Misc variables
 set :use_sudo, false
 
-namespace :db do
-  desc "Make symlink for database yaml and production database" 
-  task :symlink do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
-    run "ln -nfs #{shared_path}/config/amazon.yml #{release_path}/config/amazon.yml" 
+namespace :books do
+  namespace :db do
+    desc "Make symlink for database yaml and production database" 
+    task :symlink do
+      run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
+      run "ln -nfs #{shared_path}/config/amazon.yml #{release_path}/config/amazon.yml" 
+    end
+    after "deploy:update_code", "books:db:symlink"
   end
+
+  desc "Run tests"
+  task :run_tests do
+    run "cd #{release_path} && rake db:create"
+    run "cd #{release_path} && rake db:migrate"
+    run "cd #{release_path} && rake"
+  end
+  before 'deploy:symlink', 'books:run_tests'
 end
 
-after "deploy:update_code", "db:symlink"
 
 namespace :deploy do
  task :restart, :roles => :app do
