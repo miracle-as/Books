@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080704104605) do
+ActiveRecord::Schema.define(:version => 20080709001044) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(:version => 20080704104605) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "authorships", ["book_id"], :name => "index_authorships_on_book_id"
+  add_index "authorships", ["author_id"], :name => "index_authorships_on_author_id"
 
   create_table "books", :force => true do |t|
     t.string   "name"
@@ -56,6 +59,9 @@ ActiveRecord::Schema.define(:version => 20080704104605) do
     t.datetime "updated_at"
   end
 
+  add_index "loans", ["user_id"], :name => "index_loans_on_user_id"
+  add_index "loans", ["book_id"], :name => "index_loans_on_book_id"
+
   create_table "publishers", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -67,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20080704104605) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "searches", ["keywords"], :name => "index_searches_on_keywords"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id",        :limit => 11
