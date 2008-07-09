@@ -3,7 +3,7 @@
   %h2= 'Books on loan'[]
   .books= render :partial => @active_loans
 - else
-  = "The user {user} has no books on loan."[:user_has_no_books_on_loan, @user.name_or_login]
+  .no_books= "The user {user} has no books on loan."[:user_has_no_books_on_loan, @user.name_or_login]
   
 - if @inactive_loans.size > 0
   %h2= 'Previous loans'[]
