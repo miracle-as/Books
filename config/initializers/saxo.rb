@@ -1,0 +1,1 @@
+SAXO_CONF = YAML.load(File.open("#{RAILS_ROOT}/config/saxo.yml"))
