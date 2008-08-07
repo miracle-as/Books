@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
   validates_uniqueness_of :isbn
 
   before_validation :cleanup_isbn
-  after_save :initialize_from_amazon
+  after_save :initialize_from_amazon, :initialize_from_saxo 
 
   def current_loan
     @current_loan ||= loans.active.first
@@ -45,6 +45,27 @@ class Book < ActiveRecord::Base
   def cleanup_isbn
     self.isbn = ISBN_Tools.isbn13_to_isbn10(self.isbn) if ISBN_Tools.is_valid_isbn13?(self.isbn)
     self.isbn = ISBN_Tools.cleanup(self.isbn)
+  end
+
+  def initialize_from_saxo
+    return unless self.name.blank?
+    doc = get_saxo_response
+
+    return if doc.nil?
+    
+    item = doc.at('item')
+    if item
+      self.name = (item/:title).innerHTML
+
+      (item/:author).each do |author_element|
+        name = (author_element/:name).innerHTML
+        author = Author.find_or_create_by_name(name)
+        self.authors << author unless self.author_ids.include?(author.id)
+      end
+
+      self.save
+    end
+
   end
 
   def initialize_from_amazon
@@ -84,6 +105,11 @@ class Book < ActiveRecord::Base
       return doc if (doc/:item).size > 0
     end
     nil
+  end
+  
+  def get_saxo_response
+    xml = open("http://api.saxo.com/v1/ItemService.asmx/FindItem?developerKey=#{SAXO_CONF['developer_key']}&sessionKey=&keyword=#{self.isbn}&keywordType=ISBN")
+    doc = Hpricot.parse(xml)
   end
   
   def xml_to_image(xml)
