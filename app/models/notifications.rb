@@ -3,7 +3,7 @@ class Notifications < ActionMailer::Base
     setup
     subject     "[Books] Ny bog: #{book.name}"
     body[:book] = book
-    recipients  'lgs@lenio.dk'
+    recipients  'alle@lenio.dk'
   end
 
   protected
