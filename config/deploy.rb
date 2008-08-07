@@ -22,6 +22,7 @@ namespace :books do
     task :symlink do
       run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml" 
       run "ln -nfs #{shared_path}/config/amazon.yml #{release_path}/config/amazon.yml" 
+      run "ln -nfs #{shared_path}/config/saxo.yml #{release_path}/config/saxo.yml" 
     end
     after "deploy:update_code", "books:db:symlink"
   end
