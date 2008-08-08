@@ -1,5 +1,3 @@
-Hej,
-
 Så er der kommet en ny bog i Lenios bibliotek:
 
 <%= @book.name %>
@@ -8,7 +6,7 @@ af <%= @book.authors.collect(&:name).sort.to_sentence(:skip_last_comma => true, 
 Se flere detaljer på:
 http://books.lenio.dk<%= book_path(@book) %>
 
-Du kan se en liste af alle Lenios bøger på:
+Du kan se en liste over alle Lenios bøger på:
 http://books.lenio.dk
 
 Mvh.
