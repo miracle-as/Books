@@ -53,9 +53,15 @@ class Book < ActiveRecord::Base
 
     return if doc.nil?
     
-    item = doc.at('item')
+    item = doc.at('itemdata')
     if item
       self.name = (item/:title).innerHTML
+      self.pages = (item/:pagecount).innerHTML
+      self.published = (item/:releasedate).innerHTML
+
+      publisher = ((item/:publisher)/:name).innerHTML
+      publisher = Publisher.find_or_create_by_name(publisher)
+      self.publisher = publisher
 
       (item/:author).each do |author_element|
         name = (author_element/:name).innerHTML
@@ -108,7 +114,16 @@ class Book < ActiveRecord::Base
   end
   
   def get_saxo_response
+    # First we look up the item id using the isbn number
     xml = open("http://api.saxo.com/v1/ItemService.asmx/FindItem?developerKey=#{SAXO_CONF['developer_key']}&sessionKey=&keyword=#{self.isbn}&keywordType=ISBN")
+    doc = Hpricot.parse(xml)
+
+    return if doc.nil?
+    first_item = doc.at('item')
+    item_id = (first_item/:id).innerHTML
+    
+    # Then we look up the details
+    xml = open("http://api.saxo.com/v1/ItemService.asmx/GetItemData?developerKey=#{SAXO_CONF['developer_key']}&sessionKey=&itemId=#{item_id}") 
     doc = Hpricot.parse(xml)
   end
   
