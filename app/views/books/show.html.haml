@@ -4,6 +4,7 @@
     .edit_link= link_to 'Edit'[], edit_book_path(@book)
     - unless @book.notification_sent?
       .notify_link= link_to 'Send "new book" notification'[:send_new_book_notification], notify_book_path(@book), :method => :post
+    .reload_link= link_to 'Reload data from web services'[:reload_from_webservices], reload_book_path(@book), :method => :put
 
   %h3= @book.name
   - if @book.authors.size > 0

@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
   validates_uniqueness_of :isbn
 
   before_validation :cleanup_isbn
-  after_save :initialize_from_amazon, :initialize_from_saxo 
+  after_save :initialize_from_webservices
 
   def current_loan
     @current_loan ||= loans.active.first
@@ -37,6 +37,11 @@ class Book < ActiveRecord::Base
     self.save
   end
 
+  def load_from_webservices!
+    return true if initialize_from_amazon
+    initialize_from_saxo
+  end
+
   protected
   def must_be_valid_isbn
     errors.add :isbn, 'is invalid' unless ISBN_Tools.is_valid?(self.isbn)
@@ -46,12 +51,17 @@ class Book < ActiveRecord::Base
     self.isbn = ISBN_Tools.isbn13_to_isbn10(self.isbn) if ISBN_Tools.is_valid_isbn13?(self.isbn)
     self.isbn = ISBN_Tools.cleanup(self.isbn)
   end
+  
+  # Called on after_save and only runs if necessary
+  def initialize_from_webservices
+    return unless self.name.blank?
+    load_from_webservices!
+  end
 
   def initialize_from_saxo
-    return unless self.name.blank?
     doc = get_saxo_response
 
-    return if doc.nil?
+    return false if doc.nil?
     
     item = doc.at('itemdata')
     if item
@@ -74,15 +84,15 @@ class Book < ActiveRecord::Base
       end
 
       self.save
+      return true
     end
-
+    false
   end
 
   def initialize_from_amazon
-    return unless self.name.blank?
     doc = get_amazon_response
     
-    return if doc.nil?
+    return false if doc.nil?
 
     (doc/:item).collect do |item|
       self.amazon_detail_page_url = (item/:detailpageurl).innerHTML
@@ -105,7 +115,9 @@ class Book < ActiveRecord::Base
       end
 
       self.save
+      return true
     end
+    false
   end
   
   def get_amazon_response
@@ -123,12 +135,18 @@ class Book < ActiveRecord::Base
     doc = Hpricot.parse(xml)
 
     return if doc.nil?
-    first_item = doc.at('item')
-    item_id = (first_item/:id).innerHTML
+    item_id = (doc/"itemresult/items/item/id").innerHTML
     
     # Then we look up the details
-    xml = open("http://api.saxo.com/v1/ItemService.asmx/GetItemData?developerKey=#{SAXO_CONF['developer_key']}&sessionKey=&itemId=#{item_id}") 
-    doc = Hpricot.parse(xml)
+    detail_url = "http://api.saxo.com/v1/ItemService.asmx/GetItemData?developerKey=#{SAXO_CONF['developer_key']}&sessionKey=&itemId=#{item_id}"
+    begin
+      xml = open(detail_url)
+      doc = Hpricot.parse(xml)
+    rescue
+      logger.debug { "SAXO call failed: #{detail_url}" }
+      logger.debug { "from response:\n#{doc}" }
+      return nil
+    end 
   end
   
   def xml_to_image(xml)

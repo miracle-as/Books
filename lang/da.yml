@@ -41,6 +41,7 @@ adding: Tilføjer
 isbn: ISBN
 edit: Rediger
 send_new_book_notification: Udsend "ny bog" e-mail
+reload_from_webservices: Hent data fra webservices
 new_book_notification_sent: E-mail sendt.
 today: i dag
 for_1_day_ago: for 1 dag siden

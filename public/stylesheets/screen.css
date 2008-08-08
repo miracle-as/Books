@@ -172,7 +172,7 @@ a {
       font-weight: bold; }
   #bd .no_books {
     margin-bottom: 20px; }
-  #bd #book .edit_link, #bd #book .notify_link, #bd #book .borrowed_by {
+  #bd #book .edit_link, #bd #book .notify_link, #bd #book .borrowed_by, #bd #book .reload_link {
     margin-bottom: 1em; }
   #bd #book .publish_data, #bd #book .added {
     margin-top: 1em; }

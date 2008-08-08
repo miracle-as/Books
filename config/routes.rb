@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.feed '/feed.atom', :controller => 'dashboard', :action => 'index', :format => 'atom'
 
   map.root :controller => 'dashboard', :action => 'index'
-  map.resources :books, { :member => { :notify => :post } } do |books|
+  map.resources :books, { :member => { :notify => :post, :reload => :put } } do |books|
     books.resources :loans
   end
   map.resources :authors

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :login_required, :only => [:new, :create, :edit, :update, :notify]
+  before_filter :login_required, :only => [:new, :create, :edit, :update, :notify, :reload]
   
   def per_page
     10
@@ -51,6 +51,16 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.notify!
     flash[:notice] = 'New book-notification sent.'[:new_book_notification_sent]
+    redirect_to @book
+  end
+  
+  def reload
+    @book = Book.find(params[:id])
+    if @book.load_from_webservices!
+      flash[:notice] = 'Data reloaded.'[:data_reloaded]
+    else
+      flash[:warning] = 'No data found.'[:no_data_found]
+    end
     redirect_to @book
   end
   
