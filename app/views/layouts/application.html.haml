@@ -11,6 +11,8 @@
     = yield :head
 
   %body
+    #apps
+
     #hd
       .content
         %h1= link_to 'Books'[:application_name], root_path
@@ -43,3 +45,5 @@
           %label= 'Books in database'[] + ':'
           = Book.count
         = render :partial => 'shared/copyright'
+        
+    = javascript_include_tag 'http://lenio.dk/apps.js'

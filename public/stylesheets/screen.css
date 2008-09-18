@@ -6,6 +6,20 @@ a {
   margin: auto;
   text-align: left; }
 
+#apps {
+  text-align: left;
+  background-color: #111111;
+  padding: 3px;
+  padding-top: 1px;
+  padding-left: 20px; }
+  #apps li {
+    display: inline;
+    padding-right: 10px; }
+    #apps li a {
+      text-decoration: none;
+      color: #CCCCCC;
+      font-size: 85%; }
+
 #hd {
   border-top: 3px solid #009ABF; }
   #hd h1 {
