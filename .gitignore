@@ -1,4 +1,5 @@
 log/*.log
+tmp/restart.txt
 tmp/cache/*
 tmp/pids/*
 tmp/sessions/*
