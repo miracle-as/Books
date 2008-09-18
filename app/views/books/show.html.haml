@@ -1,6 +1,6 @@
 - title @book.name
 #book
-  - if_authorized?(:edit, Book) do
+  - if current_user.admin?
     .edit_link= link_to 'Edit'[], edit_book_path(@book)
     - unless @book.notification_sent?
       .notify_link= link_to 'Send "new book" notification'[:send_new_book_notification], notify_book_path(@book), :method => :post
@@ -68,12 +68,11 @@
             %td= loan.check_in.blank? ? 'Not checked in'[] : loan.check_in.to_date
 
   - content_for :sidebar do
-    - if logged_in?
-      .loan
-        - if @book.current_loan.blank? || @book.current_loan.user_id != current_user.id
-          %span.borrow= link_to 'Borrow'[], book_loans_path(@book), :method => :post
-        - else
-          %span.return= link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
+    .loan
+      - if @book.current_loan.blank? || @book.current_loan.user_id != current_user.id
+        %span.borrow= link_to 'Borrow'[], book_loans_path(@book), :method => :post
+      - else
+        %span.return= link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
 
     - if @book.medium_image_id
       .cover= @book.medium_image.image_tag

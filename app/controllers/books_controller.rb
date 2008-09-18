@@ -1,6 +1,4 @@
 class BooksController < ApplicationController
-  before_filter :login_required, :only => [:new, :create, :edit, :update, :notify, :reload]
-  
   def per_page
     10
   end

@@ -2,22 +2,18 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include AuthenticatedSystem
-
   helper :all # include all helpers, all the time
-
-  # See ActionController::RequestForgeryProtection for details
-  # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'c7f33ae0010ebe3668f420c07e12792b'
-  
-  # See ActionController::Base for details 
-  # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
-  # filter_parameter_logging :password
-  
-  before_filter :initialize_empty_search
 
+  before_filter CASClient::Frameworks::Rails::Filter
+  before_filter :initialize_empty_search
   around_filter :set_language
+  
+  def current_user
+    return nil unless session[:casfilteruser]
+    @current_user ||= User.find_or_create_by_login(session[:casfilteruser])
+  end
+  helper_method :current_user
   
   protected
   def initialize_empty_search

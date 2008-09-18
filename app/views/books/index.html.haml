@@ -12,7 +12,7 @@
   %script{ :type => 'text/javascript' }
     = "var dontCheckScroll = true;"
 
-- if_authorized?(:create, Book) do
+- if current_user.admin?
   - content_for :sidebar do
     - form_for @book do |f|
       .field

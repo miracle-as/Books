@@ -1,14 +1,7 @@
 class LoansController < ApplicationController
-  before_filter :login_required, :except => :index
-
   def index
-    if logged_in?
-      @my_loans = current_user.loans.active.all(:order => 'check_out', :include => {:book => [ :authors, :loans, :small_image ]})
-      @loans = Loan.active.all(:conditions => ['NOT(loans.user_id = ?)', current_user.id], :order => 'users.login, loans.created_at', :include => [:user, {:book => [ :authors, :loans, :small_image ]}])
-    else
-      @loans = Loan.active.all(:order => 'users.login, loans.created_at', :include => [:user, {:book => [ :authors, :loans, :small_image ]}])
-    end
-    
+    @my_loans = current_user.loans.active.all(:order => 'check_out', :include => {:book => [ :authors, :loans, :small_image ]})
+    @loans = Loan.active.all(:conditions => ['NOT(loans.user_id = ?)', current_user.id], :order => 'users.login, loans.created_at', :include => [:user, {:book => [ :authors, :loans, :small_image ]}])
     @loans = @loans.group_by(&:user)
   end
 

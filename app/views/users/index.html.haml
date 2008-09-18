@@ -5,14 +5,10 @@
     %tr
       %th= 'Login'[]
       %th= 'Name'[]
-      - if logged_in? && current_user.admin?
-        %th= 'Books on loan'[]
-        %th= 'Actions'[]
+      %th= 'Books on loan'[]
   %tbody
   - @users.each do |user|
     %tr
       %td= user.login
       %td= link_to user.name_or_login, user
-      - if logged_in? && current_user.admin?
-        %td= user.loans.size
-        %td= link_to 'Edit'[], edit_user_path(user)
+      %td= user.loans.size
