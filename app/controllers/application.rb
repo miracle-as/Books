@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # :secret => 'c7f33ae0010ebe3668f420c07e12792b'
 
-  before_filter CASClient::Frameworks::Rails::Filter
+  before_filter CASClient::Frameworks::Rails::Filter, :except => :feed
   before_filter :initialize_empty_search
   around_filter :set_language
   

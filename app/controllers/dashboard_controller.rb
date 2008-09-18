@@ -5,4 +5,8 @@ class DashboardController < ApplicationController
     @tags = Book.tag_counts
     @max_tag_count = @tags.collect(&:count).max
   end
+  
+  def feed
+    @books = Book.all(:limit => 5, :order => 'created_at DESC', :include => [ :authors, :small_image ])
+  end
 end
