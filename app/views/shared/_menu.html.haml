@@ -12,7 +12,7 @@
       %li
         .notes
           = 'Logged in as'[:logged_in_as]
-          %span.logged_in_as= link_to current_user.login, edit_user_path(current_user)
+          %span.logged_in_as= link_to current_user.login, current_user
       %li= link_to 'Log out'[], logout_path, { :title => 'Log out'[] }
 
     .clear
