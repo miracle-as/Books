@@ -172,7 +172,8 @@ a {
       width: 65px;
       float: left;
       margin-right: 10px;
-      text-align: right; }
+      text-align: right;
+      overflow: hidden; }
       #bd .books .book .image img {
         vertical-align: top; }
     #bd .books .book .meta {
