@@ -8,14 +8,23 @@ class ApplicationController < ActionController::Base
   before_filter CASClient::Frameworks::Rails::Filter, :except => :feed
   before_filter :initialize_empty_search
   around_filter :set_language
-  
+
   def current_user
     return nil unless session[:casfilteruser]
-    @current_user ||= User.find_or_create_by_login(session[:casfilteruser])
+    @current_user ||= find_or_create_user(session[:casfilteruser], session[:cas_extra_attributes])
   end
   helper_method :current_user
   
   protected
+  def find_or_create_user(login, extra_attributes)
+    user = User.find_or_create_by_login(login)
+    
+    common_name = extra_attributes['cn']
+    user.update_attribute :name, common_name if common_name && user.name != common_name
+    
+    user
+  end
+
   def initialize_empty_search
     @search = Search.new
   end

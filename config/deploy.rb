@@ -33,7 +33,7 @@ namespace :books do
     run "cd #{release_path} && rake db:migrate"
     run "cd #{release_path} && rake"
   end
-  before 'deploy:symlink', 'books:run_tests'
+#  before 'deploy:symlink', 'books:run_tests'
 end
 
 

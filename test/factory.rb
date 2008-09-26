@@ -1,7 +1,6 @@
 module Factory
   def self.create_user(login)
-    password = login * ((6 / login.size).to_i + 1)
-    User.create!(:login => login, :email => "#{login}@example.com", :password => password, :password_confirmation => password)
+    User.create!(:login => login)
   end
   
   def self.create_book(title)
