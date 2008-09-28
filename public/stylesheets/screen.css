@@ -207,6 +207,26 @@ a {
   #ft .stats {
     float: right; }
 
+html.widget #bd {
+  text-align: left;
+  padding: 8px;
+  padding-bottom: 3px;
+  margin: 0;
+  background-color: #FFFFFF; }
+  html.widget #bd h2 {
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    display: block;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 5px; }
+  html.widget #bd ul li {
+    padding-bottom: 5px; }
+    html.widget #bd ul li a {
+      color: #551A8B; }
+  html.widget #bd #latest_books {
+    margin-top: 5px; }
+
 .clear {
   clear: both; }
   .clear hr {

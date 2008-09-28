@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'dashboard', :action => 'index'
 
+  map.widget '/widget', :controller => 'dashboard', :action => 'index', :format => 'widget'
+
   map.resources :users
   map.resource :session
   

@@ -1,0 +1,15 @@
+#loans
+  %h2= 'Your loans'[]
+  - if @loans.size > 0
+    %ul
+      - @loans.collect(&:book).each do |book|
+        %li{ :title => (book.authors.size > 0 ? "by #{strip_tags(author_names(book.authors))}" : nil) }= link_to book.name, book, :target => '_blank'
+
+  - else
+    = 'You have no books on loan.'[:no_books_on_loan]
+
+#latest_books
+  %h2= '{count} latest books in the library'[:x_latest_books_in_library, 3]
+  %ul
+    - @books.first(3).each do |book|
+      %li{ :title => (book.authors.size > 0 ? "by #{strip_tags(author_names(book.authors))}" : nil) }= link_to book.name, book, :target => '_blank'
