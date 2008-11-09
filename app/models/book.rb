@@ -63,6 +63,8 @@ class Book < ActiveRecord::Base
 
     return false if doc.nil?
     
+    logger.debug { "#{doc}" }
+    
     item = doc.at('itemdata')
     if item
       self.name = (item/:title).innerHTML
@@ -76,6 +78,10 @@ class Book < ActiveRecord::Base
       publisher = ((item/:publisher)/:name).innerHTML
       publisher = Publisher.find_or_create_by_name(publisher)
       self.publisher = publisher
+      
+      unless (item/:description/:subjects).innerHTML
+        self.description = (item/:description).innerHTML.gsub('&lt;', '<').gsub('&gt;', '>').gsub('<br>', "\n").gsub('<br/>', "\n").gsub('&amp;', '&')
+      end
 
       (item/:author).each do |author_element|
         name = (author_element/:name).innerHTML
