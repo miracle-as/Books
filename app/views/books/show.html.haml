@@ -12,6 +12,9 @@
       = 'by'[]
       %span= author_names(@book.authors)
       
+  - if @book.description && @book.description.size > 0
+    .description= simple_format(@book.description)
+      
   .publish_data
     - if @book.current_loan
       .borrowed_by

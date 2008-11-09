@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080918212915) do
+ActiveRecord::Schema.define(:version => 20081109141750) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20080918212915) do
     t.integer  "medium_image_id",        :limit => 11
     t.integer  "large_image_id",         :limit => 11
     t.boolean  "notification_sent",                    :default => false
+    t.text     "description"
   end
 
   create_table "images", :force => true do |t|

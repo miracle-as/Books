@@ -108,6 +108,8 @@ class Book < ActiveRecord::Base
       publisher = Publisher.find_or_create_by_name(publisher)
       self.publisher = publisher
 
+      self.description = (item/:editorialreview/:content).innerHTML.gsub('&lt;', '<').gsub('&gt;', '>')
+
       (item/:author).each do |author_element|
         name = author_element.innerHTML
         author = Author.find_or_create_by_name(name)

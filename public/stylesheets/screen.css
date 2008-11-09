@@ -191,6 +191,13 @@ a {
     margin-bottom: 1em; }
   #bd #book .publish_data, #bd #book .added {
     margin-top: 1em; }
+  #bd #book .description p {
+    margin-top: 1em; }
+  #bd #book .description ul {
+    margin: 1em;
+    margin-left: 2em; }
+    #bd #book .description ul li {
+      list-style: disc outside; }
   #bd #book label {
     font-weight: bold; }
   #bd #book .loans h2 {

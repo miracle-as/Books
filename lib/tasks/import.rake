@@ -1,4 +1,12 @@
 namespace :books do
+  desc "Reload data for all books"
+  task :reload => :environment do
+    Book.all.each do |book|
+      puts "Reloading #{book.name}..."
+      book.load_from_webservices! rescue nil
+    end
+  end
+  
   desc "Import books from CSV file"
   task :import => :environment do
     file = "#{RAILS_ROOT}/data/books.csv"
