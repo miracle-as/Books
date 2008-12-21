@@ -63,8 +63,6 @@ class Book < ActiveRecord::Base
 
     return false if doc.nil?
     
-    logger.debug { "#{doc}" }
-    
     item = doc.at('itemdata')
     if item
       self.name = (item/:title).innerHTML
