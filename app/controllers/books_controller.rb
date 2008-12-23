@@ -46,10 +46,9 @@ class BooksController < ApplicationController
   end
   
   def notify
-    @book = Book.find(params[:id])
-    @book.notify!
+    Book.send_notifications
     flash[:notice] = 'New book-notification sent.'[:new_book_notification_sent]
-    redirect_to @book
+    redirect_to book_path(params[:id])
   end
   
   def reload

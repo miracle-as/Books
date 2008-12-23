@@ -30,11 +30,12 @@ class Book < ActiveRecord::Base
   def isbn_13
     ISBN_Tools.hyphenate_isbn13(ISBN_Tools.isbn10_to_isbn13(self.isbn))
   end
-  
-  def notify!
-    Notifications.deliver_new_book(self)
-    self.notification_sent = true
-    self.save
+
+  def self.send_notifications
+    @books = Book.all(:conditions => { :notification_sent => false })
+    Notifications.deliver_new_books(@books)
+    @books.each { |b| b.update_attribute :notification_sent, true }
+    @books
   end
 
   def load_from_webservices!

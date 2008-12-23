@@ -1,8 +1,13 @@
 class Notifications < ActionMailer::Base
-  def new_book(book)
+  def new_books(books)
     setup
-    subject     "[Books] Ny bog: #{book.name}"
-    body[:book] = book
+
+    if books.size == 1
+      subject "[Books] Nye bog: #{books.first.name}"
+    else
+      subject "[Books] Nye bøger: #{books.collect{ |b| b.name }.join(', ')}"
+    end
+    body[:books] = books
     recipients  'alle@lenio.dk'
   end
 
