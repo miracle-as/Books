@@ -45,7 +45,7 @@
       .pages
         %label= 'Pages'[] + ':'
         = @book.pages
-      
+
   .added
     %label= 'Added to library'[] + ':'
     = @book.created_at.to_date
@@ -53,7 +53,7 @@
   - unless @book.amazon_detail_page_url.blank?
     .amazon
       = link_to 'Amazon'[], @book.amazon_detail_page_url, :target => '_blank'
-  
+
   - if @loans.size > 0
     .loans
       %h2= 'Who borrowed this book in the past?'[:who_borrowed_this_book]
@@ -83,7 +83,7 @@
           = link_to @book.medium_image.image_tag, @book.large_image.url
         - else
           = link_to @book.medium_image.image_tag
-      
+  
     - if @tags.size > 0
       .tags
         %label= 'Tags'[] + ':'
