@@ -9,3 +9,7 @@ function scrollDistanceFromBottom(argument) {
 function pageHeight() {
   return Math.max(document.body.scrollHeight, document.body.offsetHeight);
 }
+
+$(document).ready(function() {
+  $('.cover a').lightBox();
+});

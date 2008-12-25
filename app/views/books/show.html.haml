@@ -78,7 +78,11 @@
         %span.return= link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
 
     - if @book.medium_image_id
-      .cover= @book.medium_image.image_tag
+      .cover
+        - if @book.large_image
+          = link_to @book.medium_image.image_tag, @book.large_image.url
+        - else
+          = link_to @book.medium_image.image_tag
       
     - if @tags.size > 0
       .tags
