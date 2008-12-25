@@ -73,7 +73,8 @@ class Book < ActiveRecord::Base
       item_id = (item/:id).first.innerHTML
       self.small_image = Image.create(:url => "http://images.saxo.com/ItemImage.aspx?ItemID=#{item_id}&Height=75", :height => 75)
       self.medium_image = Image.create(:url => "http://images.saxo.com/ItemImage.aspx?ItemID=#{item_id}&Height=160", :height => 160)
-      
+      self.large_image = Image.create(:url => "http://images.saxo.com/ItemImage.aspx?ItemID=#{item_id}&Height=500", :height => 500)
+
       publisher = ((item/:publisher)/:name).innerHTML
       publisher = Publisher.find_or_create_by_name(publisher)
       self.publisher = publisher
