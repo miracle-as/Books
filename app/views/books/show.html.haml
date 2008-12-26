@@ -1,20 +1,17 @@
 - title @book.name
 #book
-  - if current_user.admin?
-    .edit_link= link_to 'Edit'[], edit_book_path(@book)
-    - unless @book.notification_sent?
-      .notify_link= link_to 'Send "new book" notification'[:send_new_book_notification], notify_book_path(@book), :method => :post
-    .reload_link= link_to 'Reload data from web services'[:reload_from_webservices], reload_book_path(@book), :method => :put
+  - if @book.medium_image_id
+    .cover
+      - if @book.large_image
+        = link_to @book.medium_image.image_tag, @book.large_image.url
+      - else
+        = link_to @book.medium_image.image_tag
 
-  %h3= @book.name
   - if @book.authors.size > 0
     .authors
       = 'by'[]
       %span= author_names(@book.authors)
-      
-  - if @book.description && @book.description.size > 0
-    .description= simple_format(@book.description)
-      
+
   .publish_data
     - if @book.current_loan
       .borrowed_by
@@ -53,6 +50,9 @@
   - unless @book.amazon_detail_page_url.blank?
     .amazon
       = link_to 'Amazon'[], @book.amazon_detail_page_url, :target => '_blank'
+      
+  - if @book.description && @book.description.size > 0
+    .description= simple_format(@book.description)      
 
   - if @loans.size > 0
     .loans
@@ -77,14 +77,13 @@
       - else
         %span.return= link_to 'Return'[], loan_path(@book.current_loan), :method => :delete
 
-    - if @book.medium_image_id
-      .cover
-        - if @book.large_image
-          = link_to @book.medium_image.image_tag, @book.large_image.url
-        - else
-          = link_to @book.medium_image.image_tag
-  
     - if @tags.size > 0
       .tags
         %label= 'Tags'[] + ':'
         = tag_links(@tags)
+
+    - if current_user.admin?
+      .edit_link= link_to 'Edit'[], edit_book_path(@book)
+      - unless @book.notification_sent?
+        .notify_link= link_to 'Send "new book" notification'[:send_new_book_notification], notify_book_path(@book), :method => :post
+      .reload_link= link_to 'Reload data from web services'[:reload_from_webservices], reload_book_path(@book), :method => :put
