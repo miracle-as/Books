@@ -6,7 +6,7 @@
         = link_to @book.medium_image.image_tag, @book.large_image.url
         .help= 'Click the image to see a larger version.'[:click_for_larger]
       - else
-        = link_to @book.medium_image.image_tag
+        = @book.medium_image.image_tag
 
   - if @book.authors.size > 0
     .authors
