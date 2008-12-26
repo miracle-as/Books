@@ -2,8 +2,9 @@
 #book
   - if @book.medium_image_id
     .cover
-      - if @book.large_image
+      - if @book.large_image && @book.large_image.url
         = link_to @book.medium_image.image_tag, @book.large_image.url
+        .help= 'Click the image to see a larger version.'[:click_for_larger]
       - else
         = link_to @book.medium_image.image_tag
 
