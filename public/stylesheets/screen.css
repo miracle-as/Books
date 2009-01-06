@@ -211,8 +211,10 @@ a {
         list-style: disc outside; }
   #bd #book label {
     font-weight: bold; }
-  #bd #book .loans h2 {
-    margin-top: 1em; }
+  #bd #book .loans {
+    clear: both; }
+    #bd #book .loans h2 {
+      margin-top: 1em; }
   #bd #tag_cloud {
     margin-bottom: 20px; }
 
