@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 class Notifications < ActionMailer::Base
   def new_books(books)
     setup
 
     if books.size == 1
-      subject "[Books] Nye bog: #{books.first.name}"
+      subject "[Books] Ny bog: #{books.first.name}"
     else
       subject "[Books] Nye bøger: #{books.collect{ |b| b.name }.join(', ')}"
     end
