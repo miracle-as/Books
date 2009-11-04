@@ -30,11 +30,12 @@ class Book < ActiveRecord::Base
   def isbn_13
     ISBN_Tools.hyphenate_isbn13(ISBN_Tools.isbn10_to_isbn13(self.isbn))
   end
-  
-  def notify!
-    Notifications.deliver_new_book(self)
-    self.notification_sent = true
-    self.save
+
+  def self.send_notifications
+    @books = Book.all(:conditions => { :notification_sent => false })
+    Notifications.deliver_new_books(@books)
+    @books.each { |b| b.update_attribute :notification_sent, true }
+    @books
   end
 
   def load_from_webservices!
@@ -72,10 +73,15 @@ class Book < ActiveRecord::Base
       item_id = (item/:id).first.innerHTML
       self.small_image = Image.create(:url => "http://images.saxo.com/ItemImage.aspx?ItemID=#{item_id}&Height=75", :height => 75)
       self.medium_image = Image.create(:url => "http://images.saxo.com/ItemImage.aspx?ItemID=#{item_id}&Height=160", :height => 160)
-      
+      self.large_image = Image.create(:url => "http://images.saxo.com/ItemImage.aspx?ItemID=#{item_id}&Height=500", :height => 500)
+
       publisher = ((item/:publisher)/:name).innerHTML
       publisher = Publisher.find_or_create_by_name(publisher)
       self.publisher = publisher
+      
+      unless (item/:description/:subjects).innerHTML
+        self.description = (item/:description).innerHTML.gsub('&lt;', '<').gsub('&gt;', '>').gsub('<br>', "\n").gsub('<br/>', "\n").gsub('&amp;', '&')
+      end
 
       (item/:author).each do |author_element|
         name = (author_element/:name).innerHTML
@@ -107,6 +113,8 @@ class Book < ActiveRecord::Base
       publisher = (item/:publisher).innerHTML
       publisher = Publisher.find_or_create_by_name(publisher)
       self.publisher = publisher
+
+      self.description = (item/:editorialreview/:content).innerHTML.gsub('&lt;', '<').gsub('&gt;', '>')
 
       (item/:author).each do |author_element|
         name = author_element.innerHTML

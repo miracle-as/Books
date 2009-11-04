@@ -174,9 +174,9 @@ a
     :width = !content_width / 2 + !column_spacing / 2
     :float right
 
-    .container
-      :margin-left = !column_spacing
-    
+  .container
+    :margin-left = !column_spacing
+  
   .with-sidebar #main
     :width = !content_width - !sidebar_width - !column_spacing
     :float left
@@ -252,16 +252,43 @@ a
     :margin-bottom 20px
 
   #book
+    .cover
+      :float left
+    
+      img
+        :margin-right 10px
+      
+      .help
+        :font-size 11px
+        :color #666666
+        :margin-bottom 10px
+        :width 125px
+  
     .edit_link, .notify_link, .borrowed_by, .reload_link
       :margin-bottom 1em
-    
+
     .publish_data, .added
       :margin-top 1em
+      
+    .description
+      :clear both
+
+      p
+        :margin-top 1em
+    
+      ul
+        :margin 1em
+        :margin-left 2em
+
+        li
+          :list-style disc outside
 
     label
       :font-weight bold
       
     .loans
+      :clear both
+
       h2
         :margin-top 1em
         
@@ -310,3 +337,5 @@ html.widget
   
   hr
     :display none
+
+@import lightbox

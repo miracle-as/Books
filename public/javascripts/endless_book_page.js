@@ -7,7 +7,7 @@ function checkScroll() {
   
   if (nearBottomOfPage()) {
     currentPage++;
-    new Ajax.Request('/books.js?page=' + currentPage, {asynchronous:true, evalScripts:true, method:'get'});
+    $.ajax({type: 'GET', url: '/books.js?page=' + currentPage, dataType: 'script'});
   } else {
     setTimeout("checkScroll()", 250);
   }
@@ -25,4 +25,6 @@ function pageHeight() {
   return Math.max(document.body.scrollHeight, document.body.offsetHeight);
 }
 
-document.observe('dom:loaded', checkScroll);
+$(document).ready(function() {
+  checkScroll();
+});

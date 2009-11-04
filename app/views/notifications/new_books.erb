@@ -1,0 +1,18 @@
+<% if @books.size == 1 -%>
+Så er der kommet en ny bog i Lenios bibliotek:
+
+<%= render :partial => 'book', :locals => { :book => @books.first } %>
+
+<% else -%>
+Så er der kommet nye bøger i Lenios bibliotek:
+
+<% @books.each do |book| -%>
+<%= render :partial => 'book', :locals => { :book => book } %>
+
+<% end -%>
+<% end -%>
+Du kan se en liste over alle Lenios bøger på:
+http://books.lenio.dk
+
+Mvh.
+Lenios bibliotek
