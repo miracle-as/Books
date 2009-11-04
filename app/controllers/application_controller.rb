@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include HoptoadNotifier::Catcher
 
   helper :all # include all helpers, all the time
-  protect_from_forgery :secret => 'c7f33ae0010ebe3668f420c07e12792b'
+  protect_from_forgery
 
   before_filter CASClient::Frameworks::Rails::Filter, :except => :feed
   before_filter :initialize_empty_search
@@ -14,8 +14,12 @@ class ApplicationController < ActionController::Base
   def current_user
     return nil unless session[:casfilteruser]
     @current_user ||= find_or_create_user(session[:casfilteruser], session[:cas_extra_attributes])
+    @current_user
   end
-  helper_method :current_user
+  def logged_in?
+    !!current_user
+  end
+  helper_method :current_user, :logged_in?
   
   protected
   def find_or_create_user(login, extra_attributes)

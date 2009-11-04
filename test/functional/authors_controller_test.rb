@@ -1,8 +1,9 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class AuthorsControllerTest < ActionController::TestCase
   context "on GET to :index" do
     setup do
+      login_as :quentin
       get :index
     end
 

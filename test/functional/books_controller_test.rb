@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class BooksControllerTest < ActionController::TestCase
   context "on GET to :show when not logged in" do
