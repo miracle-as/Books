@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'hpricot', :version => '~> 0.6'
   config.gem 'mislav-will_paginate', :version => '~> 2.3.2', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'fastercsv'
+  config.gem 'ruby-hmac', :lib => 'hmac'
 
   # Only load the plugins named here, in the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.

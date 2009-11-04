@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'aws_product_sign'
 
 class Book < ActiveRecord::Base
   acts_as_taggable_on :tags
@@ -129,8 +130,16 @@ class Book < ActiveRecord::Base
   end
   
   def get_amazon_response
+    aws_signer = AwsProductSign.new(:access_key => AMAZON_CONF['access_key_id'], :secret_key => AMAZON_CONF['secret_access_key'])
+    params = { 'Service'        => 'AWSECommerceService', 
+               'Operation'      => 'ItemLookup',
+               'ResponseGroup'  => 'Medium',
+               'ItemId'         => "#{self.isbn}"
+             }
+    query_string = aws_signer.query_with_signature(params)
     %w(webservices.amazon.com webservices.amazon.co.uk webservices.amazon.de).each do |domain|
-      xml = open("http://#{domain}/onca/xml?Service=AWSECommerceService&SubscriptionId=#{AMAZON_CONF['subscription_id']}&Operation=ItemLookup&ResponseGroup=Medium&ItemId=#{self.isbn}").read
+      
+      xml = open("http://#{domain}/onca/xml?#{query_string}").read
       doc = Hpricot.parse(xml)
       return doc if (doc/:item).size > 0
     end

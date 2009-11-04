@@ -1,1 +1,2 @@
-subscription_id: <amazon-key>
+access_key_id: <access_key>
+secret_access_key: <secret_access_key>
