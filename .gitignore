@@ -19,3 +19,4 @@ nbproject
 vendor/plugins/selenium-on-rails/log/*.yml
 vendor/plugins/goldspike
 .idea
+tmp/*

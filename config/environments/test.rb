@@ -20,3 +20,6 @@ config.action_controller.allow_forgery_protection    = false
 # The :test delivery method accumulates sent emails in the
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
+
+config.gem 'kjeldahl-metric_fu', :lib => 'metric_fu', :version => '>= 1.1.5', :source => 'http://gems.github.com'
+
