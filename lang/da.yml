@@ -1,6 +1,7 @@
 application_name: Books
 
-sentence_connector: og
+last_word_connector: ' og '
+two_words_connector: ' og '
 
 books_in_database: Bøger i databasen
 dashboard: Oversigt

@@ -1,6 +1,6 @@
 module BooksHelper
   def author_names(authors)
-    authors.sort_by(&:name).collect { |a| link_to a.name, a }.to_sentence(:words_connector => 'and'[:sentence_connector])
+    authors.sort_by(&:name).collect { |a| link_to a.name, a }.to_sentence(:last_word_connector => ' and '[:last_word_connector], :two_words_connector => ' and '[:two_words_connector])
   end
   
   def days_ago(date)
